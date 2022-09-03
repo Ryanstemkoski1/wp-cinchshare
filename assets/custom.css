@@ -4,6 +4,7 @@ h3,
 h4,
 h5,
 h6,
+p,
 a {
   font-family: Nunito, sans-serif;
 }
@@ -130,4 +131,38 @@ span.playIcon::before {
 
 .hidding {
   display: none !important;
+}
+
+.hs1_container {
+  min-height: 680px;
+}
+
+@media screen and (min-width: 750px) {
+  .hs1_container {
+    min-height: 950px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .hs1_container {
+    min-height: 850px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hs1_container {
+    min-height: 750px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hs1_container {
+    min-height: 700px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .hs1_container {
+    min-height: 800px;
+  }
 }
