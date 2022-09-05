@@ -191,3 +191,11 @@ span.playIcon::before {
     margin-bottom: 6rem;
   }
 }
+
+.page-id-23 .s_robust {
+  margin-top: 0 !important;
+}
+
+.fs1_container {
+  min-height: 700px;
+}

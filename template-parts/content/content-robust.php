@@ -1,4 +1,4 @@
-<section class = "max-w-max-content w-full mx-auto flex flex-col items-center px-6 xl:px-0 mt-20 lg:mt-52">
+<section class = "s_robust max-w-max-content w-full mx-auto flex flex-col items-center px-6 xl:px-0 mt-20 lg:mt-52">
   <div class = "flex flex-col items-center w-full">
     <?php if(get_field('section_robust_tool_title',$post->ID)) { ?>
       <h2 class = "mt-8 text-3xl xl:text-[2.875rem] font-bold text-center"><?php echo get_field('section_robust_tool_title',$post->ID); ?></h2>
@@ -23,7 +23,7 @@
               </div>
             </div>
             <div class="relative lg:aspect-[16/11.5] lg:w-3/5 self-stretch mb-6 lg:mb-0">
-              <div class="lg:absolute 22lg:-right-[12%] w-full lg:w-[100%] aspect-[16/11.5] rounded-[1.5rem] overflow-hidden shadow-custom" style="max-height: 453px;">
+              <div class="lg:absolute lg:-right-[8%] w-full lg:w-[100%] aspect-[16/11.5] rounded-[1.5rem] overflow-hidden shadow-custom" style="max-height: 453px;">
                 <div class="w-full h-full min-h-full bg-white">
                   <?php if(get_sub_field('section_robust_tool_image',$post->ID)) { ?>
                     <img class="transition-opacity duration-[0.7s] opacity-100 w-full h-full" src="<?php echo get_sub_field('section_robust_tool_image',$post->ID); ?>" alt="">

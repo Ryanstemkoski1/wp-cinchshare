@@ -218,4 +218,34 @@ $(document).ready(function () {
       $(this).addClass('bg-secondary')
     }
   })
+
+  /**
+   * Direct Sales 
+   */
+
+  $('.f_unbeatable_button>div').click(function () {
+    let btnName = $(this).attr('index')
+
+    if ($(this).hasClass('opacity-60')) {
+      $.each($('.f_unbeatable_button>div'), function () {
+        if (!$(this).hasClass('opacity-60')) {
+          $(this).addClass('opacity-60')
+        }
+      })
+
+      $.each($('.f_unbeatable_content > div'), function () {
+        let contName = $(this).attr('index')
+
+        if (btnName === contName) {
+          $(this).removeClass('hidden')
+        } else {
+          $(this).addClass('hidden')
+        }
+
+        $(this).find("video").get(0).play()
+      })
+    }
+
+    $(this).removeClass('opacity-60')
+  })
 })  

@@ -1,5 +1,8 @@
-<section class="py-10">
-  <div class="w-full relative flex items-center justify-center">
+<section class="py-10  relative">
+  <div class = "">
+    <img class="mx-auto transition-opacity duration-[0.7s] opacity-100 " src="/wp-content/uploads/white_bg.svg" alt="">
+  </div>
+  <div class="w-full absolute top-[50%] flex items-center justify-center" style = "transform: translateY(-50%);">
     <div class="w-full bg-white z-10 top-0 px-6 md:px-12 pb-12 pt-8">
       <div class="z-20 flex flex-col items-center">
         <div class="flex flex-col items-center">

@@ -226,6 +226,7 @@ function remove_editor() {
 					case 'templates/template-faq.php':
 					case 'templates/template-direct.php':
 					case 'templates/template-about.php':
+					case 'templates/template-features.php':
 					// the below removes 'editor' support for 'pages'
 					remove_post_type_support('page', 'editor');
 						// add_filter('use_block_editor_for_post', '__return_false');
