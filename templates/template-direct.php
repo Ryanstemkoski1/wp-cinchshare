@@ -216,22 +216,22 @@
 
   <section class="w-full relative flex items-center justify-center px-2">
     <div class="z-20 flex flex-col items-center ">
-      <p class="text-3xl lg:text-3xl font-bold mb-4">Teamwork makes the dream work</p>
+      <?php if(get_field('directsales_section9_title',$post->ID)) { ?>
+        <h2 class="text-3xl lg:text-3xl font-bold mb-4"><?php echo get_field('directsales_section9_title',$post->ID); ?></h2>
+      <?php } ?>
       <div class="w-20 h-1 bg-secondary rounded-full"></div>
-      <p class="text-lg max-w-3xl text-center mt-4">At CinchShare, we put our users first. Our mission is to support you, so you can make your business everything you want it to be.</p>
+      <?php if(get_field('directsales_section9_content',$post->ID)) { ?>
+        <p class="text-lg max-w-3xl text-center mt-4"><?php echo get_field('directsales_section9_content',$post->ID); ?></p>
+      <?php } ?>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-28 justify-center mt-12">
-        <div class="flex flex-col items-center mx-12">
-          <img class="w-16 h-16 lg:w-24 lg:h-24 mb-4" src="/wp-content/uploads/logo-3.svg">
-          <p class="text-center font-semibold text-xl md:text-2xl">weekly traning</p>
-        </div>
-        <div class="flex flex-col items-center mx-12">
-          <img class="w-16 h-16 lg:w-24 lg:h-24 mb-4" src="/wp-content/uploads/Real-PersonalSupport.svg">
-          <p class="text-center font-semibold text-xl md:text-2xl">weekly traning</p>
-        </div>
-        <div class="flex flex-col items-center mx-12">
-          <img class="w-16 h-16 lg:w-24 lg:h-24 mb-4" src="/wp-content/uploads/logo-4.svg">
-          <p class="text-center font-semibold text-xl md:text-2xl">weekly traning</p>
-        </div>
+        <?php if(get_field('directsales_section9_item', $post->ID)){
+          while(the_repeater_field('directsales_section9_item', $post->ID) ) { ?>
+            <div class="flex flex-col items-center mx-12">
+              <img class="w-16 h-16 lg:w-24 lg:h-24 mb-4" src="<?php echo get_sub_field('directsales_section9_icon',$post->ID); ?>">
+              <p class="text-center font-semibold text-xl md:text-2xl"><?php echo get_sub_field('directsales_section9_text',$post->ID); ?></p>
+            </div>
+          <?php }} 
+        ?> 
       </div>
     </div>
   </section>
