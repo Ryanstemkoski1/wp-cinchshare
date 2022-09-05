@@ -166,3 +166,28 @@ span.playIcon::before {
     min-height: 800px;
   }
 }
+
+.home-sec6 {
+  min-height: 615px;
+  padding: 50px 0 240px;
+}
+
+@media screen and (max-width: 749px) {
+  .home-sec6 {
+    min-height: 500px;
+  }
+}
+
+.svgsecondColor {
+  fill: #2bd4d9;
+}
+
+.reviewNav {
+  opacity: 0.4;
+}
+
+@media screen and (min-width: 1448px) {
+  .footer-form {
+    margin-bottom: 6rem;
+  }
+}

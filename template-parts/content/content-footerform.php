@@ -1,4 +1,4 @@
-<div class="flex justify-center relative mt-12 xl:mt-0 mb-0 md:mb-8 xl:mb-14 m2xl:mb-24 w-full footer-form">
+<div class="flex justify-center relative mt-12 xl:mt-0 mb-0 md:mb-8 xl:mb-14 2xl:mb-24 w-full footer-form">
   <img alt="" class="w-full max-w-screen-2xl px-4 md:px-8 absolute z-0 hidden xl:block" src="/wp-content/uploads/footer_form_bg.svg" style="object-fit: fill; min-height: 400px;">
 
   <div class="footer-item grid md:grid-cols-2 items-center justify-center gap-12 lg:gap-32 px-3 w-full max-w-screen-xl mx-auto relative z-20 py-16 xl:pb-20 2xl:pb-[5rem] bg-gradient-to-b from-primary to-secondary xl:bg-none">
