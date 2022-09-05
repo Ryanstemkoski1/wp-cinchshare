@@ -79,30 +79,32 @@ $(document).ready(function () {
   function showSlides(n) {
     let i;
     let slides = $(".mySlides");
-    let dots = $(".dots>div");
-    if (n > slides.length) { slideIndex = slides.length }
-    if (n < 1) { slideIndex = 1 }
-    for (i = 0; i < slides.length; i++) {
-      if (!slides[i].classList.contains('hidden')) {
-        slides[i].classList.add('hidden')
+    if (slides.length) {
+      let dots = $(".dots>div");
+      if (n > slides.length) { slideIndex = slides.length }
+      if (n < 1) { slideIndex = 1 }
+      for (i = 0; i < slides.length; i++) {
+        if (!slides[i].classList.contains('hidden')) {
+          slides[i].classList.add('hidden')
+        }
       }
-    }
-    for (i = 0; i < dots.length; i++) {
-      if (!dots[i].classList.contains('opacity-20')) {
-        dots[i].classList.add('opacity-20')
+      for (i = 0; i < dots.length; i++) {
+        if (!dots[i].classList.contains('opacity-20')) {
+          dots[i].classList.add('opacity-20')
+        }
       }
-    }
-    slides[slideIndex - 1].classList.remove('hidden')
-    dots[slideIndex - 1].classList.remove('opacity-20')
-    if (slideIndex == slides.length) {
-      $('.cin-feature-btn>button.next').removeClass('bg-secondary text-white').addClass('bg-white text-secondary')
-      $('.cin-feature-btn>button.next svg path').addClass('svgsecondColor')
-    } else if (slideIndex == 1) {
-      $('.cin-feature-btn>button.prev').removeClass('bg-secondary text-white').addClass('bg-white text-secondary')
-      $('.cin-feature-btn>button.prev svg path').addClass('svgsecondColor')
-    } else {
-      $('.cin-feature-btn>button').removeClass('bg-white text-secondary').addClass('bg-secondary text-white')
-      $('.cin-feature-btn>button svg path').removeClass('svgsecondColor')
+      slides[slideIndex - 1].classList.remove('hidden')
+      dots[slideIndex - 1].classList.remove('opacity-20')
+      if (slideIndex == slides.length) {
+        $('.cin-feature-btn>button.next').removeClass('bg-secondary text-white').addClass('bg-white text-secondary')
+        $('.cin-feature-btn>button.next svg path').addClass('svgsecondColor')
+      } else if (slideIndex == 1) {
+        $('.cin-feature-btn>button.prev').removeClass('bg-secondary text-white').addClass('bg-white text-secondary')
+        $('.cin-feature-btn>button.prev svg path').addClass('svgsecondColor')
+      } else {
+        $('.cin-feature-btn>button').removeClass('bg-white text-secondary').addClass('bg-secondary text-white')
+        $('.cin-feature-btn>button svg path').removeClass('svgsecondColor')
+      }
     }
   }
 
@@ -134,20 +136,22 @@ $(document).ready(function () {
   function reviewSlides(n) {
     let i;
     let slides = $(".reviewSlides");
-    if (n > slides.length) { reviewIndex = slides.length }
-    if (n < 1) { reviewIndex = 1 }
-    for (i = 0; i < slides.length; i++) {
-      if (!slides[i].classList.contains('hidden')) {
-        slides[i].classList.add('hidden')
+    if (slides.length) {
+      if (n > slides.length) { reviewIndex = slides.length }
+      if (n < 1) { reviewIndex = 1 }
+      for (i = 0; i < slides.length; i++) {
+        if (!slides[i].classList.contains('hidden')) {
+          slides[i].classList.add('hidden')
+        }
       }
-    }
-    slides[reviewIndex - 1].classList.remove('hidden')
-    if (reviewIndex == slides.length) {
-      $('.cin-review-btn>button.next').addClass('reviewNav')
-    } else if (reviewIndex == 1) {
-      $('.cin-review-btn>button.prev').addClass('reviewNav')
-    } else {
-      $('.cin-review-btn>button').removeClass('reviewNav')
+      slides[reviewIndex - 1].classList.remove('hidden')
+      if (reviewIndex == slides.length) {
+        $('.cin-review-btn>button.next').addClass('reviewNav')
+      } else if (reviewIndex == 1) {
+        $('.cin-review-btn>button.prev').addClass('reviewNav')
+      } else {
+        $('.cin-review-btn>button').removeClass('reviewNav')
+      }
     }
   }
 
@@ -157,6 +161,61 @@ $(document).ready(function () {
       plusReview(-1)
     } else if (cn.includes('next')) {
       plusReview(1)
+    }
+  })
+
+  /**
+   * Direct Sales Section 7
+   */
+
+  $('.s-direct_toggle  .content_button button').click(function () {
+    let btnName = $(this).attr('index')
+
+    if ($(this).hasClass('text-secondary')) {
+      $.each($('.s-direct_toggle .content_button button'), function () {
+        $(this).removeClass('bg-secondary text-white').addClass("text-secondary bg-white")
+        if ($(this).attr('index') == btnName) {
+          $(this).addClass('bg-secondary text-white').removeClass("text-secondary bg-white")
+        }
+      })
+
+      $.each($('.s-direct_toggle .content_text'), function () {
+        let contName = $(this).attr('index')
+
+        if (contName == btnName) {
+          $(this).removeClass('hidden')
+        } else {
+          $(this).addClass('hidden')
+        }
+      })
+    }
+
+
+  })
+
+  /**
+   * Direct Sales top sellers
+   */
+
+  $('.t-seller_buttons button').click(function () {
+    let btnName = $(this).attr('index')
+
+    if (!$(this).hasClass('bg-secondary')) {
+      $.each($('.t-seller_buttons button'), function () {
+        $(this).removeClass('bg-secondary')
+      })
+
+      $.each($('.t-seller_contents>div'), function () {
+        let contName = $(this).attr('index')
+
+        if (contName == btnName) {
+          $(this).removeClass('hidden')
+        } else {
+          $(this).addClass('hidden')
+        }
+      })
+
+      $(this).addClass('bg-secondary')
     }
   })
 })  

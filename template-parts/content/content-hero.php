@@ -22,9 +22,12 @@
            if( have_rows('hero_button') ):
             while( have_rows('hero_button') ): the_row();
         ?>
-          <a href = "<?php echo get_sub_field('hero_button_link',$post->ID); ?>" type="button" class="text-center false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-9 w-40"><?php echo get_sub_field('hero_button_text',$post->ID); ?></a>
+          <a href = "<?php echo get_sub_field('hero_button_link',$post->ID); ?>" type="button" class="text-center false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-9 min-w-40"><?php echo get_sub_field('hero_button_text',$post->ID); ?></a>
           <?php endwhile; ?>
         <?php endif; ?>
+        <?php if(get_field('hero_text',$post->ID)) { ?>
+              <p class="text-sm mt-8"><?php echo get_field('hero_text',$post->ID); ?></p>
+        <?php } ?>
       </div>
     </div>
   </div>

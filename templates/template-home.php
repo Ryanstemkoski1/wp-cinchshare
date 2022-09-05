@@ -41,7 +41,7 @@
 
         $value = get_field('home_section3_image',$post->ID);
 
-        if($value['type'] =='video') { ?>
+        if($value && $value['type'] =='video') { ?>
             <video src="<?php echo $value['url']; ?>" muted preload="auto" autoplay playsinline="" class="z-10 absolute w-9/12 shadow-sm" style="width: 100%; height: 100%;"></video>
           <?php } else { ?>
             <img alt="" class="z-10 absolute w-9/12 shadow-sm" src="<?php echo $value['url']; ?>">
@@ -115,7 +115,7 @@
                 
                 $value = get_sub_field('best_posting_media', $post->ID);
 
-                if($value['type'] =='video') { ?>
+                if($value && $value['type'] =='video') { ?>
                   <div class="animatedVideo" style="width: 100%; height: 100%;">
                     <video src="<?php echo $value['url'];?>" muted  preload="auto" autoplay playsinline="" style="width: 100%; height: 100%;"></video>
                   </div>
@@ -134,7 +134,7 @@
                 while( have_rows('cloud_drive') ): the_row();
                 
                 $value = get_sub_field('cloud_drive_media', $post->ID);
-                if($value['type'] =='video') { ?>
+                if($value && $value['type'] =='video') { ?>
                   <div class="animatedVideo" style="width: 100%; height: 100%;">
                     <video src="<?php echo $value['url']; ?>" muted preload="auto" autoplay playsinline="" style="width: 100%; height: 100%;"></video>
                   </div>
@@ -153,7 +153,7 @@
                 while( have_rows('textclips') ): the_row();
                 
                 $value = get_sub_field('textclips_media', $post->ID);
-                if($value['type'] =='video') { ?>
+                if($value && $value['type'] =='video') { ?>
                   <div class="animatedVideo" style="width: 100%; height: 100%;">
                     <video src="<?php echo $value['url']; ?>" muted preload="auto" autoplay playsinline="" style="width: 100%; height: 100%;"></video>
                   </div>

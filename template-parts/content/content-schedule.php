@@ -17,9 +17,11 @@
                   <img class="transition-opacity duration-[0.7s] opacity-100 " src="<?php echo get_sub_field('schedule_post_icon',$post->ID); ?>" alt="">
                 <?php } ?>
                 </div>
-                <p class="text-[#9C90B5]"></p>
+                <?php if(get_sub_field('schedule_post_content',$post->ID)) { ?>
+                  <p class="text-[#9C90B5]"><?php echo get_sub_field('schedule_post_content',$post->ID); ?></p>
+                <?php } ?>
                 <?php if(get_sub_field('schedule_post_text',$post->ID)) { ?>
-                  <p class="text-xs text-[#9C90B5]"><?php echo get_sub_field('schedule_post_text',$post->ID); ?></p>
+                  <p class="text-xs text-[#5433ED]"><?php echo get_sub_field('schedule_post_text',$post->ID); ?></p>
                 <?php } ?>
                 
               </div>
