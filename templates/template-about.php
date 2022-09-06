@@ -15,7 +15,7 @@
 ?>
 
 <main id="site-content" role="main">
-  <section class="bg-top bg-no-repeat bg-contain pb-12" style="background-image: url('/wp-content/uploads/about-hero-bg.svg');">
+  <section class="bg-top bg-no-repeat bg-contain pt-32 pb-12" style="background-image: url('/wp-content/uploads/about-hero-bg.svg');">
     <div class="pt-10 lg:pt-30 text-center px-3 max-w-5xl mx-auto">
       <?php if(get_field('about_section1_title',$post->ID)) { ?>
         <h1 class="text-3xl lg:text-5xl font-bold pb-5">

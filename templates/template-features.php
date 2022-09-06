@@ -15,8 +15,8 @@
 ?>
   <main id="site-content" role="main">
     <section class="bg-top bg-no-repeat bg-cover fs1_container relative">
-      <img class="absolute hidden md:block h-[90vh] object-cover" src="/wp-content/uploads/Features_Section1_bg.svg" style="z-index: -1; width: 100%;">
-      <div class="pt-12 max-w-screen-2xl mx-auto flex flex-col items-center px-3">
+      <img class="absolute hidden md:block h-full object-cover" src="/wp-content/uploads/Features_Section1_bg.svg" style="z-index: -1; width: 100%;">
+      <div class="pt-32 max-w-screen-2xl mx-auto flex flex-col items-center px-3">
         <?php if(get_field('features_section1_title',$post->ID)) { ?>
           <h1 class="text-3xl lg:text-5xl font-bold text-center xl:text-left"><?php echo get_field('features_section1_title',$post->ID); ?></h1>
         <?php } ?>

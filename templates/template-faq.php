@@ -14,7 +14,7 @@
   }
 ?>
 <main id="site-content" role="main">
-  <section class="relative z-10 max-w-max-content w-full mx-auto flex flex-col items-center px-3 pt-20 pb-20 lg:pb-38">
+  <section class="relative z-10 max-w-max-content w-full mx-auto flex flex-col items-center px-3 pt-36 pb-20 lg:pb-38">
     
       <?php if(get_field('faq_page_title',$post->ID)) { ?>
         <h1 class="text-center text-3xl md:text-5xl font-bold"><?php echo get_field('faq_page_title',$post->ID); ?></h1>

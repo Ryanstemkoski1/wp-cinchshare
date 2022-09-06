@@ -1,16 +1,15 @@
 <section class="py-10  relative">
-  <div class = "">
-    <img class="mx-auto transition-opacity duration-[0.7s] opacity-100 " src="/wp-content/uploads/white_bg.svg" alt="">
-  </div>
-  <div class="w-full absolute top-[50%] flex items-center justify-center" style = "transform: translateY(-50%);">
+  <div class="w-full flex items-center  justify-center">
     <div class="w-full bg-white z-10 top-0 px-6 md:px-12 pb-12 pt-8">
       <div class="z-20 flex flex-col items-center">
         <div class="flex flex-col items-center">
-        <?php if(get_field('schedule_post_title',$post->ID)) { ?>
-          <h2 class="text-2xl xl:text-3xl font-semibold text-center pb-10"><?php echo get_field('schedule_post_title',$post->ID); ?></h2>
-        <?php } ?>
-          
+          <?php if(get_field('schedule_post_title',$post->ID)) { ?>
+            <h2 class="text-2xl xl:text-3xl font-semibold text-center pb-10"><?php echo get_field('schedule_post_title',$post->ID); ?></h2>
+          <?php } ?>
         </div>
+        <?php if(get_field('schedule_post_content',$post->ID)) { ?>
+            <p class = "max-w-2xl m-auto pb-6 text-center" ><?php echo get_field('schedule_post_content',$post->ID); ?></p>
+        <?php } ?>
         <div class="grid justify-center grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-8 xl:gap-20">
           <?php if(get_field('schedule_post_post',$post->ID)){
             while(the_repeater_field('schedule_post_post', $post->ID) ) { ?>

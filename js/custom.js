@@ -248,4 +248,43 @@ $(document).ready(function () {
 
     $(this).removeClass('opacity-60')
   })
+
+  /**
+   * Pricing 
+   */
+
+  $('.s_price_btns>div').click(function () {
+    $('.s_price_btns button').toggleClass('move')
+    if ($('.s_price_btns button').hasClass('move')) {
+      $('.s_price_btns button').text('Annually')
+    } else {
+      $('.s_price_btns button').text('Monthly')
+    }
+
+    $('.package_year').toggleClass('hidden')
+    $('.package_month').toggleClass('hidden')
+    $('.info_month').toggleClass('hidden')
+    $('.info_year').toggleClass('hidden')
+  })
+
+  /**
+   * Pricing Accordion
+   */
+
+  $('.cin-accordion li>div').click(function () {
+    let btnName = $(this).attr('index')
+
+    $.each($('.cin-accordion li'), function () {
+      let contName = $(this).children().attr('index')
+      if (contName != btnName) {
+        $(this).find('.accordion_body').addClass('hidden');
+        $(this).find('.minus').addClass('hidden');
+        $(this).find('.plus').removeClass('hidden');
+      }
+    })
+
+    $(this).find('.accordion_body').toggleClass('hidden');
+    $(this).find('.minus').toggleClass('hidden');
+    $(this).find('.plus').toggleClass('hidden');
+  })
 })  

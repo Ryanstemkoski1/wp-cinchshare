@@ -9,7 +9,7 @@
 
 ?>
 
-<header id="masthead">
+<header id="masthead" class = "absolute w-full z-50">
 	<nav class = "flex justify-between items-center  max-w-max-content mx-auto px-6 xl:px-0">
 		<div class = "py-4">
 			<?php the_custom_logo(); ?>
