@@ -22,6 +22,92 @@ p {
   color: black;
 }
 
+.c_header_sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.30);
+  -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.30);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.30);
+  top: 0;
+  background: #fff;
+  display: none;
+}
+
+ul#menu-learning-center>li:hover ul.sub-menu {
+  display: flex;
+}
+
+ul#menu-learning-center>li>ul.sub-menu .menu-item {
+  padding: 10px 0;
+}
+
+ul#menu-learning-center>li>ul.sub-menu>li {
+  padding: 30px !important;
+}
+
+ul#menu-learning-center>li>ul.sub-menu {
+  position: absolute;
+  display: none;
+  justify-content: space-around;
+  -webkit-box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.15);
+  background: #FFFFFF;
+  box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  max-width: 1232px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15%);
+}
+
+ul#menu-learning-center>li>ul.sub-menu>li>a {
+  font-size: 20px;
+  position: relative;
+}
+
+ul#menu-learning-center>li>ul.sub-menu>li>a::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  position: absolute;
+  margin-left: -40px;
+  background-repeat: no-repeat;
+}
+
+.menu-videos-social>a::before {
+  background: url('/wp-content/uploads/social-platforms.svg');
+}
+
+.menu-videos-features>a::before {
+  background: url('/wp-content/uploads/cinchshare-features.svg');
+}
+
+.menu-videos-misc>a::before {
+  background: url('/wp-content/uploads/misc.svg');
+}
+
+.menu-categories-getting>a::before {
+  background: url('/wp-content/uploads/Group-348.svg');
+}
+
+.menu-categories-social>a::before {
+  background: url('/wp-content/uploads/platforms.svg');
+}
+
+.menu-categories-topics>a::before {
+  background: url('/wp-content/uploads/topics.svg');
+}
+
+.menu-categories-industries>a::before {
+  background: url('/wp-content/uploads/industries.svg');
+}
+
+.menu-categories-news>a::before {
+  background: url('/wp-content/uploads/news.svg');
+}
+
+
 .btn_filled_primary {
   font-weight: 700;
   color: white;

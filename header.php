@@ -21,7 +21,5 @@
 
 <body <?php body_class(); ?>>
 
-<?php wp_body_open(); ?>
-
 <div id="page">
 	<?php get_template_part( 'template-parts/layout/header', 'content' ); ?>

@@ -11,7 +11,7 @@ get_header();
 ?>
 
 	<main id="primary">
-
+		<div class = "w-40 h-[150px]"></div>
 		<?php if ( have_posts() ) : ?>
 
 			<header>
@@ -47,5 +47,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
