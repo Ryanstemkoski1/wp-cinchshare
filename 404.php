@@ -11,7 +11,7 @@ get_header();
 ?>
 
 	<main id="primary">
-
+		<div class = "w-40 h-[150px]"></div>
 		<section>
 			<header>
 				<h1 class="entry-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'cinchshare' ); ?></h1>
@@ -53,7 +53,7 @@ get_header();
 
 			</div>
 		</section>
-
+		<div class = "w-40 h-48"></div>
 	</main><!-- #main -->
 
 <?php

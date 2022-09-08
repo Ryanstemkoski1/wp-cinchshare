@@ -314,6 +314,46 @@ $(document).ready(function () {
 
     $(this).addClass('bg-secondary bg-opacity-5')
   })
+
+  /**
+   * Ajax Road More Button
+   */
+
+  $('.post_road_more').click(function () {
+    let page = $('.s_post_body').children().last().attr('currentPage')
+
+    $(this).addClass('hidden')
+    $('.loader').removeClass('hidden')
+
+    jQuery.ajax({
+      type: "post",
+      dataType: "html",
+      url: my_ajax_object.ajax_url,
+      data: {
+        action: "get_ajaxLoadMore",
+        page: parseInt(page) + 1,
+      },
+      success: function (response) {
+        console.log(response);
+        $('.s_post_body').append(response)
+
+        $('.loader').addClass('hidden')
+        // loadMoreAjax();
+      }
+    });
+  })
+
+  function loadMoreAjax() {
+    let page = parseInt($('.s_post_body').children().last().attr('currentPage'))
+    let totalPosts = parseInt($('.s_post_body').children().last().attr('totalPosts'))
+
+    if ((totalPosts - page * 6) > 0) {
+      $('.post_road_more').removeClass('hidden')
+    } else {
+      $('.post_road_more').addClass('hidden')
+    }
+
+  }
 })
 
 /**

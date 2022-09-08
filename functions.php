@@ -246,3 +246,6 @@ function remove_editor() {
 	}
 }
 add_action('init', 'remove_editor');
+
+require get_template_directory() . '/inc/post-types.php';
+

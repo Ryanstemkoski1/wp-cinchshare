@@ -16,20 +16,9 @@
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
+		endif; ?>
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div>
-				<?php
-				cinchshare_posted_on();
-				cinchshare_posted_by();
-				?>
-			</div>
-		<?php endif; ?>
 	</header>
-
-	<?php cinchshare_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -58,6 +47,6 @@
 	</div>
 
 	<footer>
-		<?php cinchshare_entry_footer(); ?>
+		<!-- <?php cinchshare_entry_footer(); ?> -->
 	</footer>
 </article><!-- #post-<?php the_ID(); ?> -->
