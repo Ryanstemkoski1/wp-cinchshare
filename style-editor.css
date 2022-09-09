@@ -2037,6 +2037,22 @@ body {
   width: 1.25rem;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-\[270px\] {
+  width: 270px;
+}
+
+.min-w-\[2xl\] {
+  min-width: 2xl;
+}
+
+.min-w-\[400px\] {
+  min-width: 400px;
+}
+
 .max-w-5xl {
   max-width: 64rem;
 }
@@ -2250,6 +2266,10 @@ body {
 
 .border-l-2 {
   border-left-width: 2px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
 }
 
 .border-primary {
@@ -2667,6 +2687,10 @@ body {
   padding-left: 0.25rem;
 }
 
+.pr-4 {
+  padding-right: 1rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2712,6 +2736,10 @@ body {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-\[14px\] {
+  font-size: 14px;
 }
 
 .font-bold {
@@ -2854,6 +2882,13 @@ body {
   -webkit-line-clamp: 2;
 }
 
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 /**
  * Custom styles to immediately follow Tailwind’s `utilities` layer
  *
@@ -2893,6 +2928,11 @@ body {
 .hover\:bg-secondary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(43 212 217 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[\#f4f4f4\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 244 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-opacity-5:hover {
@@ -4369,6 +4409,10 @@ body {
 
   .xl\:pb-0 {
     padding-bottom: 0px;
+  }
+
+  .xl\:pr-0 {
+    padding-right: 0px;
   }
 
   .xl\:text-left {

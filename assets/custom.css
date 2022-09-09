@@ -309,6 +309,44 @@ span.playIcon::before {
   }
 }
 
+.loader_search {
+  border: 2px solid #f3f3f3;
+  /* Light grey */
+  border-top: 2px solid #5433ed;
+  /* Blue */
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: aspin 2s linear infinite;
+}
+
+@keyframes aspin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .learning_center_search {
   border-color: rgba(43, 212, 217, 0.64);
+}
+
+
+.learning_center_search:focus-within {
+  transition: box-shadow .3s ease-in-out;
+  box-shadow: -3px 4px 4px rgba(228, 220, 220, .192), 0 8px 11px 2px rgba(204, 204, 204, .5) !important;
+}
+
+.search_results {
+  border: 1px solid rgba(43, 212, 217, 0.64);
+  left: 0;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  box-shadow: -3px 4px 4px rgba(228, 220, 220, .192), 0 8px 11px 2px rgba(204, 204, 204, .5) !important;
+  position: absolute;
+  top: 41px;
+  background: white;
 }

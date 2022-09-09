@@ -18,7 +18,31 @@
   <main id="site-content" role="main">
     <section class ="w-40 h-[150px]"></section>
 
-    <section>
+    <section class = "hidden md:flex max-w-max-content m-auto pr-4 xl:pr-0 flex justify-end">
+      <div class = "relative flex border rounded-md w-fit items-center py-2 px-4 learning_center_search min-w-[400px]" >
+        <input type="text" placeholder = "Search something" class="w-full focus:outline-none">
+        <svg width="16" height="16" class ="icon_search" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_4825_48695)">
+          <path d="M10.5691 0C4.74145 0 0 4.74145 0 10.5691C0 16.3971 4.74145 21.1382 10.5691 21.1382C16.3971 21.1382 21.1382 16.3971 21.1382 10.5691C21.1382 4.74145 16.3971 0 10.5691 0ZM10.5691 19.187C5.81723 19.187 1.95122 15.321 1.95122 10.5691C1.95122 5.81728 5.81723 1.95122 10.5691 1.95122C15.321 1.95122 19.187 5.81723 19.187 10.5691C19.187 15.321 15.321 19.187 10.5691 19.187Z" fill="#5433ED"/>
+          <path d="M23.7142 22.3325L18.1207 16.739C17.7396 16.3578 17.1223 16.3578 16.7412 16.739C16.36 17.1198 16.36 17.7377 16.7412 18.1185L22.3347 23.712C22.5252 23.9026 22.7747 23.9978 23.0244 23.9978C23.2739 23.9978 23.5236 23.9026 23.7142 23.712C24.0954 23.3312 24.0954 22.7133 23.7142 22.3325Z" fill="#5433ED"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_4825_48695">
+          <rect width="24" height="24" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <svg width="16" class ="icon_clear cursor-pointer rotate-45 hidden" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.5834 6.91602H9.08335V0.416016H6.91669V6.91602H0.416687V9.08268H6.91669V15.5827H9.08335V9.08268H15.5834V6.91602Z" fill="#5433ED"/>
+        </svg>
+        <div class = "loader_search hidden"></div>
+        <div class = "absolute z-50 w-full search_results hidden">
+
+        </div>
+      </div>
+    </section>
+
+    <section class ="pt-10">
       <div class = "max-w-max-content m-auto px-4">
         <div class ="flex flex-wrap items-center justify-center">
           <svg class = "w-[30px] md:w-[38px] lg:w-[41px]" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">

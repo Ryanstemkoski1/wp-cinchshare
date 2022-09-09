@@ -355,14 +355,6 @@ $(document).ready(function () {
 
   }
 
-  /**
-   *  Ajax Search
-   */
-
-  $('.learning_center_search input').on('change', function () {
-    let inputVal = $(this).val()
-    console.log(inputVal)
-  })
 })
 
 /**
@@ -399,3 +391,58 @@ function syncContainer(towardParent) {
     $child.html($parent.children().clone())
   }
 }
+
+
+$(document).ready(function () {
+  $('.learning_center_search input').on('keyup', function () {
+    let inputva = $(this).val()
+    let cat = $('.s_post_body').children().last().attr('catName')
+
+    if (inputva.length > 0) {
+      $('.learning_center_search svg.icon_search').addClass('hidden')
+      $('.learning_center_search .icon_clear').removeClass('hidden')
+
+      if (inputva.length > 2) {
+        $('.learning_center_search .icon_clear').addClass('hidden')
+        $('.loader_search').removeClass('hidden')
+
+        jQuery.ajax({
+          type: "post",
+          dataType: "html",
+          url: my_ajax_object.ajax_url,
+          data: {
+            action: "get_ajaxSearch",
+            key: inputva,
+            cat: cat
+          },
+          success: function (response) {
+            $('.search_results').removeClass('hidden')
+            $('.search_results').html(response)
+            $('.learning_center_search .icon_clear').removeClass('hidden')
+            $('.loader_search').addClass('hidden')
+          }
+        });
+      } else {
+        $('.search_results').addClass('hidden')
+      }
+    } else {
+      $('.search_results').addClass('hidden')
+      $('.learning_center_search .icon_clear').addClass('hidden')
+    }
+  })
+
+  $('.learning_center_search .icon_clear').click(function () {
+    $('.learning_center_search input').val('')
+    $('.learning_center_search .icon_search').removeClass('hidden')
+    $('.learning_center_search .icon_clear').addClass('hidden')
+    $('.search_results').addClass('hidden')
+    $('.search_results').html('')
+  })
+
+  $(document).click(function (event) {
+    var $target = $(event.target);
+    if (!$target.closest('.learning_center_search').length) {
+      $('.learning_center_search .search_results').addClass('hidden');
+    }
+  });
+})

@@ -248,5 +248,14 @@ function remove_editor() {
 }
 add_action('init', 'remove_editor');
 
+function post_search_add($search, $wp_query) {
+	global $wpdb;
+	$seakey = $wp_query->get('search_prod_title');
+	$search = "AND (($wpdb->posts.post_title LIKE '%$seakey%') OR ($wpdb->posts.post_content LIKE '%$seakey%'))";
+    
+    return $search;
+}
+
+
 require get_template_directory() . '/inc/post-types.php';
 
