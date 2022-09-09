@@ -235,6 +235,7 @@ function remove_editor() {
 					case 'templates/template-downloads.php':
 					case 'templates/template-privacy-policy.php':	
 					case 'templates/template-contact.php':	
+					case 'templates/template-facebook.php':	
 					// the below removes 'editor' support for 'pages'
 					remove_post_type_support('page', 'editor');
 						// add_filter('use_block_editor_for_post', '__return_false');

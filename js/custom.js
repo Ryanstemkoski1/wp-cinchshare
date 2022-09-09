@@ -321,6 +321,7 @@ $(document).ready(function () {
 
   $('.post_road_more').click(function () {
     let page = $('.s_post_body').children().last().attr('currentPage')
+    let cat = $('.s_post_body').children().last().attr('catName')
 
     $(this).addClass('hidden')
     $('.loader').removeClass('hidden')
@@ -332,13 +333,12 @@ $(document).ready(function () {
       data: {
         action: "get_ajaxLoadMore",
         page: parseInt(page) + 1,
+        cat: cat
       },
       success: function (response) {
-        console.log(response);
         $('.s_post_body').append(response)
-
         $('.loader').addClass('hidden')
-        // loadMoreAjax();
+        loadMoreAjax();
       }
     });
   })
@@ -354,6 +354,15 @@ $(document).ready(function () {
     }
 
   }
+
+  /**
+   *  Ajax Search
+   */
+
+  $('.learning_center_search input').on('change', function () {
+    let inputVal = $(this).val()
+    console.log(inputVal)
+  })
 })
 
 /**

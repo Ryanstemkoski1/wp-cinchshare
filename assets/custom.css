@@ -308,3 +308,7 @@ span.playIcon::before {
     transform: rotate(360deg);
   }
 }
+
+.learning_center_search {
+  border-color: rgba(43, 212, 217, 0.64);
+}

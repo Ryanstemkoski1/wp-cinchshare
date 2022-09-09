@@ -7,6 +7,7 @@
 
   function get_ajaxLoadMore() {
     $page = $_POST['page'];
+    $cat = $_POST['cat'];
 
     
     $args = array(
@@ -14,13 +15,14 @@
       "orderby"        => "date",
       "order"          => "DESC",
       'post_status'      => 'publish',
+      'category_name'  => $cat,
       'paged' => $page,
       );
 
     $wp_query = new WP_Query( $args );
     $totalPost = $wp_query->found_posts; 
 
-    echo '<div totalPosts="'.$totalPost.'" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" currentPage = "'.$page.'">';
+    echo '<div totalPosts="'.$totalPost.'" catName = "'.$cat.'" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" currentPage = "'.$page.'">';
     if ( $wp_query->have_posts() ) :
       while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
         <div class="w-full p-4">

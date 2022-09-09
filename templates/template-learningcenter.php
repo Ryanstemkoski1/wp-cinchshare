@@ -128,7 +128,7 @@
 
             $wp_query = new WP_Query( $args );
             $totalPost = $wp_query->found_posts;  
-            echo '<div totalPosts="'.$totalPost.'" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" currentPage = "1">';
+            echo '<div totalPosts="'.$totalPost.'" catName = "" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" currentPage = "1">';
             if ( $wp_query->have_posts() ) :
               while ( $wp_query->have_posts() ) : $wp_query->the_post();
               ?>
@@ -191,6 +191,7 @@
         ?>
       </div>
     </section>
+
     <section class = "w-40 h-20"></section>
     <?php get_template_part( 'template-parts/content/content', 'footerform' ); ?>
   </main>
