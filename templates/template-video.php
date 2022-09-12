@@ -1,6 +1,6 @@
 <?php
   /**
-  * Template Name: Facebook
+  * Template Name: Videos
   * Template Post Type: post, page
   *
   * @package WordPress
@@ -16,9 +16,10 @@
 ?>  
 
   <main id="site-content" role="main">
-    <section class ="w-40 h-[150px]"></section>
+    <div class = "w-40 h-[150px]"></div>
+
     <section class = "hidden md:flex pr-4 xl:pr-0  max-w-max-content m-auto flex justify-end">
-      <div class = "relative flex border rounded-md w-fit items-center py-2 px-4 learning_center_search min-w-[400px]" >
+      <div class = "relative flex border rounded-md w-fit items-center py-2 px-4 post_search video_search min-w-[400px]" >
         <input type="text" placeholder = "Search something" class="w-full focus:outline-none">
         <svg width="16" height="16" class ="icon_search" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_4825_48695)">
@@ -41,37 +42,31 @@
       </div>
     </section>
 
-    <section class = "py-10">
-      <p class = "text-center">
-        <a href="/learning-center" class ="">Learning Center</a><span class = "text-secondary"> / Facebook</span>
-      </p>
-    </section>
 
-    <section>
+		<section class ="pt-10">
       <div class = "max-w-max-content m-auto px-4">
         <div class ="flex flex-wrap items-center justify-center">
-          <img src="/wp-content/uploads/facebook-icon.svg" alt="">
+          <?php if(get_field('page_video_title', $post->ID))  { ?> 
+            <img src="<?php echo get_field('page_video_icon', $post->ID); ?>" alt="">  
+          <?php } ?>
           <h1 class = "pl-4 text-3xl md:text-4xl lg:text-5xl font-bold">
-            <?php  
-              if(get_field('learning_facebook_title',$post->ID)) { 
-                echo get_field('learning_facebook_title',$post->ID); 
-              } else {
-                the_title(); 
-              }  ?>
+						<?php echo get_field('page_video_title', $post->ID); ?>
           </h1>
         </div>
-        <p class ="text-center font-bold text-xl pt-8 md:text-2xl lg:text-3xl" ><?php echo get_field('learning_facebook_content',$post->ID); ?></p>
+        <p class ="text-center font-bold text-xl pt-8 md:text-2xl lg:text-3xl" >
+          <?php echo get_field('page_video_content', $post->ID); ?>
+				</p>
       </div>
     </section>
 
     <section class = "my-12 md:my-28">
       <?php
       $args = array(
+        'post_type' => 'video-category',
         "posts_per_page" => 1,
         "orderby"        => "date",
         "order"          => "DESC",
-        'post_status'    => 'publish',
-        'category_name'  => 'facebook'
+        'post_status'      => 'publish',
         );      
         
       $wp_query = new WP_Query( $args );
@@ -82,24 +77,40 @@
           <div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
             <div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
               <img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
-              <div class = "py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
-                <?php if (has_post_thumbnail( $post->ID ) ): ?>
-                  <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-                  <img class="h-full w-full object-cover rounded-2xl" alt="" src="<?php echo $image[0]; ?>">
-                <?php endif; ?>
+              <div class = "s_featured_video overflow-hidden py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+                <?php 
+                  if(get_field('post_video_link', $post->ID)) { 
+                    ?>
+                    <iframe class="h-full w-full aspect-[4/3 object-cover rounded-2xl"  src="<?php echo get_field('post_video_link', $post->ID); ?>" frameborder="0" allow="autoplay"></iframe>
+                  <?php }
+                ?>
+                <div class = "featured_video_image h-full  py-4 w-full  overflow-hidden absolute top-0">
+                  <?php 
+                    $url = get_field('post_video_link', $post->ID); 
+                    $embed = explode("/embed/",$url);
+                  
+                  ?>
+                  <img class="h-full w-full object-cover rounded-2xl" alt="" src="https://i.ytimg.com/vi_webp/<?php echo $embed[1]; ?>/sddefault.webp">
+                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style = "cursor:pointer; top: 50%;left: 50%;transform: translate(-50%, -50%); position:absolute">
+                    <path d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="#5433ED"/>
+                    <path d="M24 21.737C24 20.1396 25.7803 19.1869 27.1094 20.0729L39.5038 28.3359C40.6913 29.1275 40.6913 30.8724 39.5038 31.6641L27.1094 39.927C25.7803 40.8131 24 39.8603 24 38.2629V21.737Z" fill="white"/>
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="w-full lg:w-5/12 ">
               <div class="flex items-center">
                 <p class="text-secondary font-bold text-sm md:text-base uppercase">
                   <?php 
-                    $category_detail=get_the_category($post->ID);
-                    echo $category_detail[0]->cat_name;
+                     if(get_the_terms( $post->ID, 'video' )) {
+                      $category = get_the_terms( $post->ID, 'video' );     
+                      echo $category[0]->name;
+                     }
                   ?>
                 </p>
               </div>
               <a href="<?php the_permalink();?>" class="mt-3">
-                <p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold"><?php echo get_the_title($post->ID); ?></p>
+                <p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
               </a>
               <div class="mt-6">
                 <p>
@@ -111,50 +122,32 @@
                   ?>
                 </p>
               </div>  
-              <div class ="flex flex-wrap items-center justify-between pt-6">
-                <div class="flex flex-wrap items-center">
-                  <?php $author_id=$post->post_author; ?>
-                  <img src="<?php echo get_avatar_url( $author_id ); ?> " class="h-6 w-6 rounded-full" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
-                  <p class = "font-bold text-sm md:text-base ml-2">
-                    <?php 
-                      $first = get_the_author_meta( 'user_firstname' , $author_id );
-                      if(!empty($first)) {
-                        the_author_meta( 'user_firstname' , $author_id );
-                        echo " ";
-                        the_author_meta( 'user_lastname' , $author_id );
-                      } else {
-                        the_author_meta( 'user_nicename' , $author_id );
-                      }
-                    ?> 
-                  </p>
-                </div>
-                <div class="flex text-secondary font-bold text-sm md:text-base"><?php echo do_shortcode('[post-views]'); ?> &nbsp;  min read</div>
-              </div>
             </div>
           </div>
         <?php endwhile; else : ?>
-        <p class ="text-center"><?php esc_html_e( 'Sorry, no result founded.' ); ?></p>
+        <p class = "text-center"><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
       <?php endif; ?>
     </section>
 
     <section>
       <div class = "max-w-max-content m-auto px-2">
-        <p class="font-bold text-xl md:text-2xl lg:text-3xl pl-4">Recent Posts</p>
-        <div class ="s_post_body pb-6 mt-8">
+        <p class="font-bold text-xl md:text-2xl lg:text-3xl pl-4">Recent Videos</p>
+        <div class ="s_video_body pb-6 mt-8">
           <?php 
             $i =1; 
             $args = array(
-            "posts_per_page" => 6,
-            "orderby"        => "date",
-            "order"          => "DESC",
-            'post_status'      => 'publish',
-            'category_name'  => 'facebook',
-            'paged' => 1,
+              'post_type' => 'video-category',
+              "posts_per_page" => 6,
+              "orderby"        => "date",
+              "order"          => "DESC",
+              'post_status'      => 'publish',
+              'paged' => 1,
             );
 
             $wp_query = new WP_Query( $args );
             $totalPost = $wp_query->found_posts; 
-            echo '<div totalPosts="'.$totalPost.'" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" catName = "facebook" currentPage = "1">';
+
+            echo '<div totalPosts="'.$totalPost.'" class = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" postName = "video-category" catName = "" currentPage = "1">';
             if ( $wp_query->have_posts() ) :
               while ( $wp_query->have_posts() ) : $wp_query->the_post();
               ?>
@@ -164,45 +157,35 @@
                       <?php if (has_post_thumbnail( $post->ID ) ): ?>
                         <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
                         <img class="h-full w-full object-cover" alt="" src="<?php echo $image[0]; ?>">
+                      <?php else: ?>
+                        <img class="h-full w-full object-cover" alt="" src="/wp-content/uploads/cinchshare-default.jpg">
                       <?php endif; ?>
+                      <a href="<?php the_permalink();?>" class = "absolute" style = "top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="#5433ED"/>
+                          <path d="M24 21.737C24 20.1396 25.7803 19.1869 27.1094 20.0729L39.5038 28.3359C40.6913 29.1275 40.6913 30.8724 39.5038 31.6641L27.1094 39.927C25.7803 40.8131 24 39.8603 24 38.2629V21.737Z" fill="white"/>
+                        </svg>
+                      </a>
                     </div>
                     <div class="flex flex-col py-6 px-3 lg:p-4 ">
                       <div class="flex items-center pb-2">
                         <p class="text-secondary font-bold text-sm">
                           <?php 
-                            $category_detail=get_the_category($post->ID);
-                            echo $category_detail[0]->cat_name;
+                            if(get_the_terms( $post->ID, 'video' )) {
+                              $category = get_the_terms( $post->ID, 'video' );     
+                              echo $category[0]->name;
+                            }
                           ?>
                         </p>
                       </div>
                       <a href="<?php the_permalink();?>" class="mt-3">
                         <p class="font-bold text-md lg:text-xl break-words md:min-h-[48px] lg:min-h-[50px] line-clamp-2"><?php echo get_the_title($post->ID); ?></p>
                       </a>
-                      <div class ="flex flex-wrap items-center justify-between pt-6">
-                        <div class="flex flex-wrap items-center">
-                          <?php $author_id=$post->post_author; ?>
-                          <img src="<?php echo get_avatar_url( $author_id ); ?> " class="h-6 w-6 rounded-full" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
-                          <p class = "font-bold text-sm md:text-base ml-2">
-                            <?php 
-                              $first = get_the_author_meta( 'user_firstname' , $author_id );
-                              if(!empty($first)) {
-                                the_author_meta( 'user_firstname' , $author_id );
-                                echo " ";
-                                the_author_meta( 'user_lastname' , $author_id );
-                              } else {
-                                the_author_meta( 'user_nicename' , $author_id );
-                              }
-                            ?> 
-                          </p>
-                        </div>
-                        <div class="flex text-secondary font-bold text-sm md:text-base"><?php echo do_shortcode('[post-views]'); ?> &nbsp;  min read</div>
-                      </div>
                     </div>
                   </div>
                 </div>
-
               <?php $i++;  endwhile; else : ?>
-              <p><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
+              <p class ="text-center"><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
             <?php endif; ?>
             </div>
         </div>
@@ -210,7 +193,7 @@
           if($totalPost > 6) {
             ?>
             <div class="flex justify-center py-10">
-              <button type="button" class="post_road_more hover:bg-primary hover:text-white text-primary border border-primary px-3 py-2 rounded-lg w-32 lg:w-44">Read More</button>
+              <button type="button" class="video_road_more hover:bg-primary hover:text-white text-primary border border-primary px-3 py-2 rounded-lg w-32 lg:w-44">Read More</button>
               <div class ="loader hidden"></div>
             </div>
           <?php }
@@ -218,8 +201,7 @@
       </div>
     </section>
 
-    <section class = "w-40 h-20"></section>
+		<section class = "w-40 h-20"></section>
     <?php get_template_part( 'template-parts/content/content', 'footerform' ); ?>
-
   </main>
 <?php get_footer();?>

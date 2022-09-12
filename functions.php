@@ -236,6 +236,7 @@ function remove_editor() {
 					case 'templates/template-privacy-policy.php':	
 					case 'templates/template-contact.php':	
 					case 'templates/template-facebook.php':	
+					case 'templates/template-video.php':	
 					// the below removes 'editor' support for 'pages'
 					remove_post_type_support('page', 'editor');
 						// add_filter('use_block_editor_for_post', '__return_false');
@@ -256,6 +257,20 @@ function post_search_add($search, $wp_query) {
     return $search;
 }
 
+add_filter('get_the_archive_title', function ($title) {
+	if (is_category()) {
+			$title = single_cat_title('', false);
+	} elseif (is_tag()) {
+			$title = single_tag_title('', false);
+	} elseif (is_author()) {
+			$title = '<span class="vcard">' . get_the_author() . '</span>';
+	} elseif (is_tax()) { //for custom post types
+			$title = sprintf(__('%1$s'), single_term_title('', false));
+	} elseif (is_post_type_archive()) {
+			$title = post_type_archive_title('', false);
+	}
+	return $title;
+});
 
 require get_template_directory() . '/inc/post-types.php';
 

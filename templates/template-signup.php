@@ -1,6 +1,6 @@
 <?php
   /**
-  * Template Name: Downloads
+  * Template Name: Signup
   * Template Post Type: post, page
   *
   * @package WordPress

@@ -10,7 +10,6 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class ="w-40 h-[150px]"></div>
 	<header>
 		<?php
 		if ( ! is_front_page() ) {

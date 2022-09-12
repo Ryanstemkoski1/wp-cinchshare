@@ -55,7 +55,7 @@
       <h2 class="text-3xl xl:text-[2.875rem] font-bold text-center mb-6 xl:mb-16"><?php echo get_field('home_section4_title',$post->ID); ?></h2>
     <?php } ?>
     
-    <div class="flex flex-wrap -mx-2 mb-4 xl:hidden button_content">
+    <div class="flex flex-wrap -mx-2 mb-4 xl:hidden button_content justify-center">
       <button class="border border-secondary  rounded-full  py-1 px-5 m-2 bg-secondary  text-white" data = "batch_posting">Batch Posting</button>
       <button class="border border-secondary  rounded-full  py-1 px-5 m-2 text-secondary bg-white" data = "cloud_drive">Cloud Drive</button>
       <button class="border border-secondary  rounded-full  py-1 px-5 m-2  text-secondary bg-white" data = "textclips">TextClips</button>
@@ -75,7 +75,7 @@
             ?>
                 <p class="mt-8 lg:mt-12 text-2xl lg:text-3xl font-bold"><?php echo get_sub_field('best_posting_title',$post->ID); ?></p>
                 <p class="mt-6 lg:mt-8 font-semibold leading-7"><?php echo get_sub_field('best_posting_content',$post->ID); ?></p>
-                <a href = "<?php echo get_sub_field('best_posting_link',$post->ID); ?>" type="button" class="false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('best_posting_button',$post->ID); ?></a>
+                <a href = "<?php echo get_sub_field('best_posting_link',$post->ID); ?>" type="button" class="text-center false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('best_posting_button',$post->ID); ?></a>
               
               <?php endwhile; ?>
             <?php endif; ?>
@@ -88,7 +88,7 @@
             ?>
                 <p class="mt-8 lg:mt-12 text-2xl lg:text-3xl font-bold"><?php echo get_sub_field('cloud_drive_title',$post->ID); ?></p>
                 <p class="mt-6 lg:mt-8 font-semibold leading-7"><?php echo get_sub_field('cloud_drive_content',$post->ID); ?></p>
-                <a href = "<?php echo get_sub_field('cloud_drive_link',$post->ID); ?>" type="button" class="false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('cloud_drive_button',$post->ID); ?></a>
+                <a href = "<?php echo get_sub_field('cloud_drive_link',$post->ID); ?>" type="button" class="text-center false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('cloud_drive_button',$post->ID); ?></a>
               <?php endwhile; ?>
             <?php endif; ?>
           </div>
@@ -100,7 +100,7 @@
             ?>
                 <p class="mt-8 lg:mt-12 text-2xl lg:text-3xl font-bold"><?php echo get_sub_field('textclips_title',$post->ID); ?></p>
                 <p class="mt-6 lg:mt-8 font-semibold leading-7"><?php echo get_sub_field('textclips_content',$post->ID); ?></p>
-                <a href = "<?php echo get_sub_field('textclips_link',$post->ID); ?>" type="button" class="false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('textclips_button',$post->ID); ?></a>
+                <a href = "<?php echo get_sub_field('textclips_link',$post->ID); ?>" type="button" class="text-center false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_sub_field('textclips_button',$post->ID); ?></a>
               <?php endwhile; ?>
             <?php endif; ?>
           </div>
@@ -235,7 +235,7 @@
     </div>
   </section>
 
-  <section class="w-full mt-32 relative max-w-max-content mx-auto grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 justify-center 2xl:justify-between items-center flex-wrap gap-x-8 gap-y-20 px-6 xl:px-0">
+  <section class="w-full mt-[200px] relative max-w-max-content mx-auto grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 justify-center 2xl:justify-between items-center flex-wrap gap-x-8 gap-y-20 px-6 xl:px-0">
     <?php if(get_field('home_section8_counter',$post->ID)){
       while(the_repeater_field('home_section8_counter', $post->ID) ) { ?>
         <div class=" flex flex-col items-center bg-white rounded-xl relative drop-shadow-[0_35px_20px_#0D10250F] pb-8 px-3">

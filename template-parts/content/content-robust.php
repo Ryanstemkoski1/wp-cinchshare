@@ -1,4 +1,4 @@
-<section class = "s_robust max-w-max-content w-full mx-auto flex flex-col items-center px-6 xl:px-0 mt-20 lg:mt-52">
+<section class = "s_robust max-w-max-content w-full mx-auto flex flex-col items-center px-6 xl:px-0 mt-20 lg:mt-32 xl:mt-52">
   <div class = "flex flex-col items-center w-full">
     <?php if(get_field('section_robust_tool_title',$post->ID)) { ?>
       <h2 class = "mt-8 text-3xl xl:text-[2.875rem] font-bold text-center"><?php echo get_field('section_robust_tool_title',$post->ID); ?></h2>

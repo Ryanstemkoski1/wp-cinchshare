@@ -355,6 +355,112 @@ $(document).ready(function () {
 
   }
 
+  $('.gettingstarted_road_more').click(function () {
+    let page = $('.s_getting_start_body').children().last().attr('currentPage')
+    let postName = $('.s_getting_start_body').children().last().attr('postName')
+
+    $(this).addClass('hidden')
+    $('.loader').removeClass('hidden')
+
+    jQuery.ajax({
+      type: "post",
+      dataType: "html",
+      url: my_ajax_object.ajax_url,
+      data: {
+        action: "get_ajaxLoadMore_GettingStarted",
+        page: parseInt(page) + 1,
+        postName: postName,
+      },
+      success: function (response) {
+        $('.s_getting_start_body').append(response)
+        $('.loader').addClass('hidden')
+        loadMoreAjaxGetting();
+      }
+    });
+  })
+
+  function loadMoreAjaxGetting() {
+    let page = parseInt($('.s_getting_start_body').children().last().attr('currentPage'))
+    let totalPosts = parseInt($('.s_getting_start_body').children().last().attr('totalPosts'))
+
+    if ((totalPosts - page * 8) > 0) {
+      $('.gettingstarted_road_more').removeClass('hidden')
+    } else {
+      $('.gettingstarted_road_more').addClass('hidden')
+    }
+
+  }
+
+  $('.video_road_more').click(function () {
+    let page = $('.s_video_body').children().last().attr('currentPage')
+    let postName = $('.s_video_body').children().last().attr('postName')
+    let cat = $('.s_video_body').children().last().attr('catName')
+
+    $(this).addClass('hidden')
+    $('.loader').removeClass('hidden')
+
+    jQuery.ajax({
+      type: "post",
+      dataType: "html",
+      url: my_ajax_object.ajax_url,
+      data: {
+        action: "get_ajaxLoadMore_Video",
+        page: parseInt(page) + 1,
+        postName: postName,
+        cat: cat,
+      },
+      success: function (response) {
+        $('.s_video_body').append(response)
+        $('.loader').addClass('hidden')
+        loadMoreAjaxVideo();
+      }
+    });
+  })
+
+  function loadMoreAjaxVideo() {
+    let page = parseInt($('.s_video_body').children().last().attr('currentPage'))
+    let totalPosts = parseInt($('.s_video_body').children().last().attr('totalPosts'))
+
+    if ((totalPosts - page * 6) > 0) {
+      $('.video_road_more').removeClass('hidden')
+    } else {
+      $('.video_road_more').addClass('hidden')
+    }
+  }
+
+  $('.download_road_more').click(function () {
+    let page = $('.s_download_body').children().last().attr('currentPage')
+    let postName = $('.s_download_body').children().last().attr('postName')
+
+    $(this).addClass('hidden')
+    $('.loader').removeClass('hidden')
+
+    jQuery.ajax({
+      type: "post",
+      dataType: "html",
+      url: my_ajax_object.ajax_url,
+      data: {
+        action: "get_ajaxLoadMore_Downloads",
+        page: parseInt(page) + 1,
+        postName: postName,
+      },
+      success: function (response) {
+        $('.s_download_body').append(response)
+        $('.loader').addClass('hidden')
+        loadMoreAjaxDownloads();
+      }
+    });
+  })
+  function loadMoreAjaxDownloads() {
+    let page = parseInt($('.s_download_body').children().last().attr('currentPage'))
+    let totalPosts = parseInt($('.s_download_body').children().last().attr('totalPosts'))
+
+    if ((totalPosts - page * 9) > 0) {
+      $('.download_road_more').removeClass('hidden')
+    } else {
+      $('.download_road_more').addClass('hidden')
+    }
+  }
 })
 
 /**
@@ -428,21 +534,164 @@ $(document).ready(function () {
     } else {
       $('.search_results').addClass('hidden')
       $('.learning_center_search .icon_clear').addClass('hidden')
+      $('.learning_center_search svg.icon_search').removeClass('hidden')
     }
   })
 
-  $('.learning_center_search .icon_clear').click(function () {
-    $('.learning_center_search input').val('')
-    $('.learning_center_search .icon_search').removeClass('hidden')
-    $('.learning_center_search .icon_clear').addClass('hidden')
+  $('.post_search .icon_clear').click(function () {
+    $('.post_search input').val('')
+    $('.post_search .icon_search').removeClass('hidden')
+    $('.post_search .icon_clear').addClass('hidden')
     $('.search_results').addClass('hidden')
     $('.search_results').html('')
   })
 
   $(document).click(function (event) {
     var $target = $(event.target);
-    if (!$target.closest('.learning_center_search').length) {
-      $('.learning_center_search .search_results').addClass('hidden');
+    if (!$target.closest('.post_search').length) {
+      $('.post_search .search_results').addClass('hidden');
     }
   });
+
+  $('.custompost_center_search input').on('keyup', function () {
+    let inputva = $(this).val()
+    let cat = $('.s_getting_start_body').children().last().attr('postName')
+
+    if (inputva.length > 0) {
+      $('.custompost_center_search svg.icon_search').addClass('hidden')
+      $('.custompost_center_search .icon_clear').removeClass('hidden')
+
+      if (inputva.length > 2) {
+        $('.custompost_center_search .icon_clear').addClass('hidden')
+        $('.loader_search').removeClass('hidden')
+
+        jQuery.ajax({
+          type: "post",
+          dataType: "html",
+          url: my_ajax_object.ajax_url,
+          data: {
+            action: "get_ajaxSearch_CustomPost",
+            key: inputva,
+            cat: cat
+          },
+          success: function (response) {
+            $('.search_results').removeClass('hidden')
+            $('.search_results').html(response)
+            $('.custompost_center_search .icon_clear').removeClass('hidden')
+            $('.loader_search').addClass('hidden')
+          }
+        });
+      } else {
+        $('.search_results').addClass('hidden')
+      }
+    } else {
+      $('.search_results').addClass('hidden')
+      $('.custompost_center_search .icon_clear').addClass('hidden')
+      $('.custompost_center_search svg.icon_search').removeClass('hidden')
+    }
+  })
+
+  $('.video_search input').on('keyup', function () {
+    let inputva = $(this).val()
+    let postName = $('.s_video_body').children().last().attr('postName')
+    let cat = $('.s_video_body').children().last().attr('catName')
+
+    if (inputva.length > 0) {
+      $('.video_search svg.icon_search').addClass('hidden')
+      $('.video_search .icon_clear').removeClass('hidden')
+
+      if (inputva.length > 2) {
+        $('.video_search .icon_clear').addClass('hidden')
+        $('.loader_search').removeClass('hidden')
+
+        jQuery.ajax({
+          type: "post",
+          dataType: "html",
+          url: my_ajax_object.ajax_url,
+          data: {
+            action: "get_ajaxSearch_Video",
+            key: inputva,
+            postName: postName,
+            cat: cat
+          },
+          success: function (response) {
+            $('.search_results').removeClass('hidden')
+            $('.search_results').html(response)
+            $('.video_search .icon_clear').removeClass('hidden')
+            $('.loader_search').addClass('hidden')
+          }
+        });
+      } else {
+        $('.search_results').addClass('hidden')
+      }
+    } else {
+      $('.search_results').addClass('hidden')
+      $('.video_search .icon_clear').addClass('hidden')
+      $('.video_search svg.icon_search').removeClass('hidden')
+    }
+  })
+
+  $('.downloads_search input').on('keyup', function () {
+    let inputva = $(this).val()
+    let postName = $('.s_download_body').children().last().attr('postName')
+
+    if (inputva.length > 0) {
+      $('.downloads_search svg.icon_search').addClass('hidden')
+      $('.downloads_search .icon_clear').removeClass('hidden')
+
+      if (inputva.length > 2) {
+        $('.downloads_search .icon_clear').addClass('hidden')
+        $('.loader_search').removeClass('hidden')
+
+        jQuery.ajax({
+          type: "post",
+          dataType: "html",
+          url: my_ajax_object.ajax_url,
+          data: {
+            action: "get_ajaxSearch_Downloads",
+            key: inputva,
+            postName: postName,
+          },
+          success: function (response) {
+            $('.search_results').removeClass('hidden')
+            $('.search_results').html(response)
+            $('.downloads_search .icon_clear').removeClass('hidden')
+            $('.loader_search').addClass('hidden')
+          }
+        });
+      } else {
+        $('.search_results').addClass('hidden')
+      }
+    } else {
+      $('.search_results').addClass('hidden')
+      $('.downloads_search .icon_clear').addClass('hidden')
+      $('.downloads_search svg.icon_search').removeClass('hidden')
+    }
+  })
+
+
+  /**
+   * Featured Video autoplay
+   */
+
+  $('.featured_video_image svg').click(function () {
+    $('.featured_video_image').hide()
+    var symbol = $('.s_featured_video iframe')[0].src.indexOf("?") > -1 ? "&" : "?";
+    $('.s_featured_video iframe')[0].src += "?autoplay=1&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1";
+  })
+
+  /**
+   * 
+   * Sign up mobile Nav
+   */
+  $('.sign_up_mobile_toggle').click(function () {
+    $('.mobile_nav_bg').removeClass('hidden')
+    $('.mobile_drawer').addClass('open')
+  })
+
+  $('.mobile_nab_close').click(function () {
+    $('.mobile_nav_bg').addClass('hidden')
+    $('.mobile_drawer').removeClass('open')
+  })
+
 })

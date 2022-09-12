@@ -14,7 +14,7 @@
 		<img class="w-full absolute bottom-full footer-bg" src="/wp-content/uploads/footer_bg.svg" alt="">
 		
 		<div class = "footer-logo relative max-w-max-content w-full z-20 flex flex-col xl:flex-row items-center xl:items-start justify-between mx-auto mainFooter px-10 xl:px-0">
-			<div class="pb-12 xl:pb-0">
+			<div class="pb-0 xl:pb-0">
 				<a href="/">
 					<?php the_custom_logo(); ?>
 				</a>
