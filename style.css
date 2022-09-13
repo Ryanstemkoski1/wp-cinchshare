@@ -2245,6 +2245,10 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.mb-60 {
+  margin-bottom: 15rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -2662,10 +2666,6 @@ body {
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-scroll {
-  overflow: scroll;
 }
 
 .overflow-y-scroll {
@@ -3656,6 +3656,10 @@ body {
 
   .md\:pb-60 {
     padding-bottom: 15rem;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-right {

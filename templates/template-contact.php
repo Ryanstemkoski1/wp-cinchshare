@@ -30,6 +30,9 @@
             <p class="mt-2 font-semibold">support@cinchshare.com </p>
           </div>
         </div>
+        <div class = "contact_form">
+          <?php echo do_shortcode('[gravityform id="1" title="false"]'); ?>
+        </div>
       </div>
     </section>
 

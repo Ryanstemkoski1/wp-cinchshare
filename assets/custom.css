@@ -457,3 +457,35 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
 /* .mobile_nav ul#menu-learning-center-1>li.menu-item-has-children:hover ul.sub-menu {
   display:block;
 } */
+
+.contact_form input,
+.contact_form textarea {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding:0.75rem 1rem !important;
+  border-width: 1px;
+  width:100% !important;
+  border-radius: 0.5rem;
+}
+
+.contact_form .gform_wrapper.gravity-theme .ginput_complex {
+  flex-direction: column;
+}
+.contact_form .gform_wrapper.gravity-theme .ginput_complex span {
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+.contact_form .gform_wrapper.gravity-theme .ginput_complex span:last-child {
+  margin-top:20px;
+}
+
+.contact_form input.gform_button {
+  background:#5433ed;
+  color:white;
+  font-weight:bold;
+}
+
+.contact_form input.gform_button:hover {
+  transform:scale(1.03);
+}
