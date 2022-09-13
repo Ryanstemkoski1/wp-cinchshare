@@ -105,14 +105,14 @@
 						}
 					?>
 					<div class="hidden xl:flex -mr-4  -mb-1.5">
-						<a class="mx-2 btn_filled_primary !py-2 !px-9" href = "https://www.cinchshare.com/login">
+						<a class="mx-2 btn_filled_primary !py-2 !px-9" href = "/login">
 							Login
 						</a>
 						<div class="flex flex-col items-center justify-center mx-2">
-							<a class = "mx-2 btn_filled_secondary !py-2 !px-7" href = "https://www.cinchshare.com/signup">
+							<a class = "mx-2 btn_filled_secondary !py-2 !px-7" href = "/signup">
 									Sign Up
 							</a>
-							<a class="text-secondary text-xs mt-1 " href = "https://www.cinchshare.com/signup">
+							<a class="text-secondary text-xs mt-1 " href = "/signup">
 								14-day free trial
 							</a>
 						</div>

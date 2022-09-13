@@ -237,6 +237,7 @@ function remove_editor() {
 					case 'templates/template-contact.php':	
 					case 'templates/template-facebook.php':	
 					case 'templates/template-video.php':	
+					case 'templates/template-affiliate-application.php':	
 					// the below removes 'editor' support for 'pages'
 					remove_post_type_support('page', 'editor');
 						// add_filter('use_block_editor_for_post', '__return_false');
@@ -273,4 +274,5 @@ add_filter('get_the_archive_title', function ($title) {
 });
 
 require get_template_directory() . '/inc/post-types.php';
+require get_template_directory() . '/inc/form.php';
 

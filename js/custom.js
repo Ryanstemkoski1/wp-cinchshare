@@ -694,4 +694,38 @@ $(document).ready(function () {
     $('.mobile_drawer').removeClass('open')
   })
 
+  /**
+   * 
+   * Login 
+   */
+
+  $('.loginsubmit').click(function () {
+    let email = $('.login_form #Email').val()
+    let pass = $('.login_form #password').val()
+
+    if (email.length < 1) {
+      $('.login_form .email_note').text('Email is Required')
+    }
+
+    if (pass.length < 1) {
+      $('.login_form .pass_note').text('Password  is Required')
+    }
+
+    if (email.length > 0 && pass.length > 0) {
+      jQuery.ajax({
+        type: "post",
+        dataType: "html",
+        url: my_ajax_object.ajax_url,
+        data: {
+          action: "get_ajaxLoginform",
+          email: email,
+          pass: pass
+        },
+        success: function (response) {
+          console.log(response)
+        }
+      });
+    }
+  })
 })
+

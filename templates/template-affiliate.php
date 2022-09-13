@@ -25,7 +25,7 @@
           <p class="mt-3 text-sm font-semibold"><?php echo get_field('affiliate_section1_text',$post->ID); ?></p>
         <?php } ?>
         <p class="mt-5 lg:mt-10 text-primary font-semibold">Affiliate | Collaborators | Events</p>
-        <a href="<?php echo get_field('affiliate_section1_button_link',$post->ID); ?>">
+        <a href="/affiliate-application">
           <button type="button" class="false bg-primary shadow-button-primary hover:shadow-button-primary-hover hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold w-56 mt-5"><?php echo get_field('affiliate_section1_button',$post->ID); ?></button>
         </a>
       </div>
@@ -47,7 +47,7 @@
         <?php if(get_field('affiliate_section2_content',$post->ID)) { ?>
           <p class="mt-6"><?php echo get_field('affiliate_section2_content',$post->ID); ?></p>
         <?php } ?>
-        <a href = "<?php echo get_field('affiliate_section2_button_link',$post->ID); ?>">
+        <a href = "/affiliate-application">
           <button  class="border-primary text-primary hover:scale-[1.03] active:scale-[0.97] border px-4 py-2.5 rounded-lg font-bold mt-8 w-40"><?php echo get_field('affiliate_section2_button',$post->ID); ?></button>
         </a>
       </div>
