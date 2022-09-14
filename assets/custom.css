@@ -396,7 +396,7 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
 }
 
 .s_getting_start_body>div img {
-  background: url(image.png), linear-gradient(115.55deg, #5460E5 1.31%, #63D2DE 100%);
+  background: linear-gradient(115.55deg, #5460E5 1.31%, #63D2DE 100%);
 }
 
 @media only screen and (max-width:1279px) {
@@ -637,4 +637,63 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
 .page-template-template-login footer#colophon,
 .page-template-template-signup footer#colophon {
   display: none;
+}
+
+.signup_form {
+  padding: 30px 0;
+}
+
+.signup_form input,
+.signup_form select {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 0.75rem 1rem !important;
+  border-width: 1px;
+  border-radius: 0.5rem;
+}
+
+.signup_form input.gform_button {
+  border: none;
+  background: #5433ED;
+  color: white;
+}
+
+.gform_wrapper .gform_validation_errors {
+  display: none;
+}
+
+.validation_message {
+  padding: 0;
+}
+
+
+.download_form input::placeholder {
+  color: white;
+}
+
+.download_form input {
+  width: 24rem;
+  color: white;
+  font-weight: 300;
+  padding: 0.75rem 1rem !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  border: 1px solid white;
+  width: 24rem !important;
+  margin: auto;
+}
+
+.download_form input.gform_button {
+  border: none;
+  background: #5433ED;
+  width: fit-content !important;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.download_form .gfield_description {
+  background: transparent !important;
+  border: none !important;
+  color: white !IMPORTANT;
+  padding: 0 !important;
 }
