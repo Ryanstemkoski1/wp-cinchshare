@@ -83,6 +83,7 @@
 						is_page_template('templates/template-downloads.php') ||
 						is_page_template('templates/template-facebook.php') ||
 						is_page_template('templates/template-video.php') ||
+						is_page_template('templates/template-download-post.php') ||
 						is_archive('archive-gettingstarted') ||
 						is_archive('archive-video') ||
 						is_tax('video') ||
@@ -131,6 +132,7 @@
 						<?php
 							if(is_page_template('templates/template-learningcenter.php') || 
 							is_page_template('templates/template-downloads.php') ||
+							is_page_template('templates/template-download-post.php') ||
 							is_page_template('templates/template-facebook.php') ||
 							is_page_template('templates/template-video.php') ||
 							is_archive('archive-gettingstarted') ||
