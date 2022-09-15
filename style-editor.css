@@ -1870,10 +1870,6 @@ body {
   margin-bottom: -0.25rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
-}
-
 .block {
   display: block;
 }
@@ -1926,6 +1922,10 @@ body {
   height: 1.5rem;
 }
 
+.h-\[248px\] {
+  height: 248px;
+}
+
 .h-40 {
   height: 10rem;
 }
@@ -1936,6 +1936,10 @@ body {
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
 }
 
 .h-\[426px\] {
@@ -1986,14 +1990,6 @@ body {
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-\[50vh\] {
-  height: 50vh;
-}
-
-.h-\[248px\] {
-  height: 248px;
 }
 
 .max-h-\[250px\] {
@@ -2383,10 +2379,6 @@ body {
   --tw-border-opacity: 0.1;
 }
 
-.border-opacity-60 {
-  --tw-border-opacity: 0.6;
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2448,10 +2440,6 @@ body {
 
 .bg-opacity-5 {
   --tw-bg-opacity: 0.05;
-}
-
-.bg-opacity-10 {
-  --tw-bg-opacity: 0.1;
 }
 
 .bg-gradient-to-b {
@@ -2733,16 +2721,16 @@ body {
   padding-bottom: 12rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .pt-36 {
   padding-top: 9rem;
 }
 
 .pb-20 {
   padding-bottom: 5rem;
-}
-
-.pt-12 {
-  padding-top: 3rem;
 }
 
 .pb-44 {
@@ -3036,16 +3024,6 @@ body {
  * https://tailwindcss.com/docs/plugins#adding-utilities
  */
 
-.placeholder\:text-white::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-white::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .hover\:scale-\[1\.03\]:hover {
   --tw-scale-x: 1.03;
   --tw-scale-y: 1.03;
@@ -3129,10 +3107,6 @@ body {
 
   .sm\:w-0 {
     width: 0px;
-  }
-
-  .sm\:w-96 {
-    width: 24rem;
   }
 
   .sm\:grid-cols-2 {
@@ -3870,6 +3844,11 @@ body {
     padding-right: 0px;
   }
 
+  .lg\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -3888,11 +3867,6 @@ body {
   .lg\:px-12 {
     padding-left: 3rem;
     padding-right: 3rem;
-  }
-
-  .lg\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
   .lg\:pr-10 {
@@ -3947,6 +3921,10 @@ body {
     padding-left: 1.5rem;
   }
 
+  .lg\:pb-60 {
+    padding-bottom: 15rem;
+  }
+
   .lg\:pt-0 {
     padding-top: 0px;
   }
@@ -3977,10 +3955,6 @@ body {
 
   .lg\:pl-0 {
     padding-left: 0px;
-  }
-
-  .lg\:pb-60 {
-    padding-bottom: 15rem;
   }
 
   .lg\:text-5xl {
@@ -4667,12 +4641,12 @@ body {
     padding-top: 15rem;
   }
 
-  .\32xl\:pb-\[5rem\] {
-    padding-bottom: 5rem;
-  }
-
   .\32xl\:pt-36 {
     padding-top: 9rem;
+  }
+
+  .\32xl\:pb-\[5rem\] {
+    padding-bottom: 5rem;
   }
 
   @media (min-width: 1024px) {
