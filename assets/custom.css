@@ -689,6 +689,7 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
   width: fit-content !important;
   font-weight: 500;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .download_form .gfield_description {

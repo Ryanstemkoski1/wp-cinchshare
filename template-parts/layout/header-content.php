@@ -75,7 +75,23 @@
 			<?php } else { ?>
 				<nav class = "flex justify-between items-center  max-w-max-content mx-auto px-6 xl:px-0">
 					<div class = "py-4">
-						<?php the_custom_logo(); ?>
+						<?php 
+							if(is_page_template('templates/template-learningcenter.php') || 
+							is_page_template('templates/template-downloads.php') ||
+							is_page_template('templates/template-facebook.php') ||
+							is_page_template('templates/template-video.php') ||
+							is_page_template('templates/template-download-post.php') ||
+							is_archive('archive-gettingstarted') ||
+							is_archive('archive-video') ||
+							is_tax('video') ||
+							is_single()){ ?>
+								<a href="/learning-center" class="custom-logo-link" rel="home" aria-current="page">
+									<img width="180" height="74" src="/wp-content/uploads/learning-center_logo.svg" class="custom-logo" alt="Cinchshare">
+								</a>
+							<?php } else {
+								the_custom_logo();
+							}
+						?>
 					</div>
 
 					<?php

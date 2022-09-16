@@ -105,7 +105,7 @@ get_header();
                   ?>
                 </p>
               </div>  
-              <a href="/download-post?postid=<?php echo $post->ID; ?>">
+              <a href="<?php the_permalink();?>">
                 <button type="button" class="false bg-primary hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold w-32 lg:w-44 mt-4 lg:mt-6">Download</button>
               </a>
             </div>
@@ -158,7 +158,7 @@ get_header();
                         </p>
                       </div>
                       <p class="font-bold text-md lg:text-xl break-words md:min-h-[48px] lg:min-h-[50px] line-clamp-2"><?php echo get_the_title($post->ID); ?></p>
-                      <a href="/download-post?postid=<?php echo $post->ID; ?>">
+                      <a href="<?php the_permalink();?>">
                         <button type="button" class="false bg-primary hover:scale-[1.03] active:scale-[0.97] text-white px-4 py-2.5 rounded-lg font-bold w-32 lg:w-44 mb-4 lg:mb-6">Download</button>
                       </a>
                     </div>

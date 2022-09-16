@@ -49,7 +49,7 @@
 			<div class="max-w-screen-xl w-full mx-auto flex flex-col lg:flex-row justify-between items-center py-6 px-6 lg:px-12">
 				<p class="font-bold text-xs pb-8 lg:pb-0" style="color: rgb(150, 150, 150);">© 2022 CinchShare LLC</p>
 				<div class="grid grid-cols-2 gap-12">
-					<a class="text-secondary font-bold" href="/privacy-policy">Terms of Service</a>
+					<a class="text-secondary font-bold" href="/privacy-terms">Terms of Service</a>
 					<a class="text-secondary font-bold" href="/privacy-policy">Privacy Policy</a>
 				</div>
 			</div>
