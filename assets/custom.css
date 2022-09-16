@@ -689,7 +689,11 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
   width: fit-content !important;
   font-weight: 500;
   margin-top: 30px;
+<<<<<<< HEAD
   cursor:pointer;
+=======
+  cursor: pointer;
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 }
 
 .download_form .gfield_description {
@@ -697,6 +701,7 @@ ul#menu-learning-center>li.menu-item-has-children:hover a::after {
   border: none !important;
   color: white !IMPORTANT;
   padding: 0 !important;
+<<<<<<< HEAD
 }
 ul#menu-learning-center .menu-item {
 	padding: 2rem 0;
@@ -704,4 +709,6 @@ ul#menu-learning-center .menu-item {
 }
 ul#menu-learning-center>li>ul.sub-menu>li>a:hover{
 	color:black !important;
+=======
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 }

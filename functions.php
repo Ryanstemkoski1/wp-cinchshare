@@ -237,7 +237,12 @@ function remove_editor() {
 					case 'templates/template-contact.php':	
 					case 'templates/template-facebook.php':	
 					case 'templates/template-video.php':	
+<<<<<<< HEAD
 					case 'templates/template-affiliate-application.php':
+=======
+					case 'templates/template-affiliate-application.php':	
+					case 'templates/template-download-post.php':	
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 					case 'templates/template-term-of-service.php':		
 					// the below removes 'editor' support for 'pages'
 					remove_post_type_support('page', 'editor');
@@ -308,3 +313,7 @@ function estimate_reading_time_in_minutes ( $content = '', $words_per_minute = 3
 					
 	return $minutes;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e

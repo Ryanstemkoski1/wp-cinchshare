@@ -91,7 +91,11 @@ function custom_confirmation($confirmation,$form, $entry) {
   return $confirmation;
 } 
 
+<<<<<<< HEAD
 add_action( 'gform_after_submission_3', 'affiliate_form' );
+=======
+add_action( 'gform_after_submission_2', 'affiliate_form' );
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 
 function affiliate_form($entry) {
   $crinshareUser = $entry['3'];
@@ -110,6 +114,7 @@ function affiliate_form($entry) {
   $team_size = $entry['27'];
   $events = $entry['26'];
 
+<<<<<<< HEAD
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
@@ -134,4 +139,30 @@ function affiliate_form($entry) {
     wp_redirect('/thank-you/');
     exit;
   }
+=======
+  // $curl = curl_init();
+
+  // curl_setopt_array($curl, array(
+  //   CURLOPT_URL => 'https://preview.cinchshare.com/frontEnd/affiliate/submit',
+  //   CURLOPT_RETURNTRANSFER => true,
+  //   CURLOPT_ENCODING => '',
+  //   CURLOPT_MAXREDIRS => 10,
+  //   CURLOPT_TIMEOUT => 0,
+  //   CURLOPT_FOLLOWLOCATION => true,
+  //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  //   CURLOPT_CUSTOMREQUEST => 'POST',
+  //   CURLOPT_POSTFIELDS => array('name' => ''.$name.'','company' => ''.$companyName.'','feature' => ''.$faviourtFeature.'','experience' => ''.$experience.'','email' => ''.$email.'','title' => ''.$title.'','website' => ''.$website.'','facebook' => ''.$facebookUrl.'','twitter' => ''.$twitterUrl.'','instagram' => ''.$instagramUrl.'','pinterest' => ''.$printrestProfile.'','inDirectSales' => ''.$directSale.'','isUser' => ''.$crinshareUser.'','team_size' => ''.$team_size.'','events' => ''.$events.''),
+  // ));
+
+  // $response = curl_exec($curl);
+
+  // curl_close($curl);
+  // $res = json_decode($response);
+  // var_dump($response);
+
+  // if($res->ErrorMessage == null && $res->Redirect == null){
+  //   wp_redirect('/thank-you/');
+  //   exit;
+  // }
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 }

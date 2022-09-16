@@ -61,6 +61,10 @@
 
     <section class = "my-12 md:my-28">
       <?php
+
+      $featuredId = get_field('blog_featured_post', $post->ID);
+      
+
       $args = array(
         'post_type' => 'video-category',
         "posts_per_page" => 1,

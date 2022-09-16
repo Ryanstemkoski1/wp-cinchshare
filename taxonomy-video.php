@@ -14,7 +14,11 @@ get_header();
 		$taxonomy = get_queried_object()->taxonomy;
 		$term_id = get_queried_object()->term_id;
 		$catinfo = get_term_by( 'id', $term_id, 'video' );
+<<<<<<< HEAD
 		$post_id = $taxonomy.'_'.$term_id;
+=======
+    $post_id = $taxonomy.'_'.$term_id;
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
 		$catslug = $catinfo->slug;
 	?>
 
@@ -67,8 +71,12 @@ get_header();
       <?php
 
       $featuredId = get_field('blog_featured_post', $post_id);
+<<<<<<< HEAD
 
 	  if($featuredId) { 
+=======
+      if($featuredId) { 
+>>>>>>> a40904d3156b9f575414d2bf2e9dcce00aa2cd2e
         $post = get_post($featuredId); ?>
         <div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
           <div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
