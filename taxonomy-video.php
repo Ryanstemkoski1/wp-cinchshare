@@ -14,6 +14,7 @@ get_header();
 		$taxonomy = get_queried_object()->taxonomy;
 		$term_id = get_queried_object()->term_id;
 		$catinfo = get_term_by( 'id', $term_id, 'video' );
+		$post_id = $taxonomy.'_'.$term_id;
 		$catslug = $catinfo->slug;
 	?>
 
@@ -44,103 +45,160 @@ get_header();
       </div>
     </section>
 
-		<section class = "pt-6">
-			<p class = "flex items-center justify-center">
-				<a href="/video">Video </a> &nbsp; / &nbsp; <span class = "text-secondary"><?php echo $catinfo->name; ?></span>
-			</p>
-		</section>
+	<section class = "pt-6">
+		<p class = "flex items-center justify-center">
+			<a href="/video">Video </a> &nbsp; / &nbsp; <span class = "text-secondary"><?php echo $catinfo->name; ?></span>
+		</p>
+	</section>
 
-		<section class ="pt-10">
-			<div class = "max-w-max-content m-auto px-4">
-				<div class ="flex flex-wrap items-center justify-center">
-					<img src="<?php echo get_field('post_icon_image', $post_id);?>" class = "max-w-[45px] md:max-w-[60px]" alt="">
-					<?php 
-						the_archive_title('<h1 class="pl-4 text-3xl md:text-4xl lg:text-5xl font-bold">', '</h1>');
-					?>
-				</div>
-				<?php the_archive_description('<div class ="archive_description text-center font-bold text-xl pt-8 md:text-2xl lg:text-3xl">', '</div>'); ?>
+	<section class ="pt-10">
+		<div class = "max-w-max-content m-auto px-4">
+			<div class ="flex flex-wrap items-center justify-center">
+				<img src="<?php echo get_field('post_icon_image', $post_id);?>" class = "max-w-[45px] md:max-w-[60px]" alt="">
+				<?php 
+					the_archive_title('<h1 class="pl-4 text-3xl md:text-4xl lg:text-5xl font-bold">', '</h1>');
+				?>
 			</div>
-		</section>
+ 			<?php the_archive_description('<div class ="archive_description text-center font-bold text-xl pt-8 md:text-2xl lg:text-3xl">', '</div>'); ?>
+		</div>
+	</section>
 
-		<section class = "my-12 md:my-28">
+	<section class = "my-12 md:my-28">
       <?php
-      $args = array(
-        'post_type' => 'video-category',
-        "posts_per_page" => 1,
-        "orderby"        => "date",
-        "order"          => "DESC",
-        'post_status'      => 'publish',
-				'tax_query' => array(
-					array(
-								'taxonomy' => 'video',
-								'field' => 'slug', 
-								'terms' => array( $catslug ),
-								'operator' => 'IN'
-						)
-					)
-        );      
-        
-      $wp_query = new WP_Query( $args );
 
-      if ( $wp_query->have_posts() ) :
-        while ( $wp_query->have_posts() ) : $wp_query->the_post();
-        ?>
-          <div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
-            <div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
-              <img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
-              <div class = "s_featured_video overflow-hidden py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+      $featuredId = get_field('blog_featured_post', $post_id);
+
+	  if($featuredId) { 
+        $post = get_post($featuredId); ?>
+        <div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
+          <div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
+            <img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
+            <div class = "s_featured_video overflow-hidden py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+              <?php 
+                if(get_field('post_video_link', $post->ID)) { 
+                  ?>
+                  <iframe class="h-full w-full aspect-[4/3 object-cover rounded-2xl"  src="<?php echo get_field('post_video_link', $post->ID); ?>" frameborder="0" allow="autoplay"></iframe>
+                <?php }
+              ?>
+              <div class = "featured_video_image h-full  py-4 w-full  overflow-hidden absolute top-0">
                 <?php 
-                  if(get_field('post_video_link', $post->ID)) { 
-                    ?>
-                    <iframe class="h-full w-full aspect-[4/3 object-cover rounded-2xl"  src="<?php echo get_field('post_video_link', $post->ID); ?>" frameborder="0" allow="autoplay"></iframe>
-                  <?php }
+                  $url = get_field('post_video_link', $post->ID); 
+                  $embed = explode("/embed/",$url);
+                
                 ?>
-                <div class = "featured_video_image h-full  py-4 w-full  overflow-hidden absolute top-0">
-                  <?php 
-                    $url = get_field('post_video_link', $post->ID); 
-                    $embed = explode("/embed/",$url);
-                  
-                  ?>
-                  <img class="h-full w-full object-cover rounded-2xl" alt="" src="https://i.ytimg.com/vi_webp/<?php echo $embed[1]; ?>/sddefault.webp">
-                  <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style = "cursor:pointer; top: 50%;left: 50%;transform: translate(-50%, -50%); position:absolute">
-                    <path d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="#5433ED"/>
-                    <path d="M24 21.737C24 20.1396 25.7803 19.1869 27.1094 20.0729L39.5038 28.3359C40.6913 29.1275 40.6913 30.8724 39.5038 31.6641L27.1094 39.927C25.7803 40.8131 24 39.8603 24 38.2629V21.737Z" fill="white"/>
-                  </svg>
-                </div>
+                <img class="h-full w-full object-cover rounded-2xl" alt="" src="https://i.ytimg.com/vi_webp/<?php echo $embed[1]; ?>/sddefault.webp">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style = "cursor:pointer; top: 50%;left: 50%;transform: translate(-50%, -50%); position:absolute">
+                  <path d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="#5433ED"/>
+                  <path d="M24 21.737C24 20.1396 25.7803 19.1869 27.1094 20.0729L39.5038 28.3359C40.6913 29.1275 40.6913 30.8724 39.5038 31.6641L27.1094 39.927C25.7803 40.8131 24 39.8603 24 38.2629V21.737Z" fill="white"/>
+                </svg>
               </div>
-            </div>
-            <div class="w-full lg:w-5/12 ">
-              <div class="flex items-center">
-                <p class="text-secondary font-bold text-sm md:text-base uppercase">
-                  <?php 
-                     if(get_the_terms( $post->ID, 'video' )) {
-                      $category = get_the_terms( $post->ID, 'video' );     
-                      echo $category[0]->name;
-                     }
-                  ?>
-                </p>
-              </div>
-              <a href="<?php the_permalink();?>" class="mt-3">
-                <p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
-              </a>
-              <div class="mt-6">
-                <p>
-                  <?php if(get_the_excerpt($post->ID)) {
-                    echo get_the_excerpt($post->ID);
-                  } else {
-                    echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
-                  }
-                  ?>
-                </p>
-              </div>  
             </div>
           </div>
-        <?php endwhile; else : ?>
-        <p class = "text-center"><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
-      <?php endif; ?>
+          <div class="w-full lg:w-5/12 ">
+            <div class="flex items-center">
+              <p class="text-secondary font-bold text-sm md:text-base uppercase">
+                <?php 
+                  if(get_the_terms( $post->ID, 'video' )) {
+                    $category = get_the_terms( $post->ID, 'video' );     
+                    echo $category[0]->name;
+                  }
+                ?>
+              </p>
+            </div>
+            <a href="<?php the_permalink();?>" class="mt-3">
+              <p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
+            </a>
+            <div class="mt-6">
+              <p>
+                <?php if(get_the_excerpt($post->ID)) {
+                  echo get_the_excerpt($post->ID);
+                } else {
+                  echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
+                }
+                ?>
+              </p>
+            </div>  
+          </div>
+        </div>
+      <?php } else {
+
+        $args = array(
+          'post_type' => 'video-category',
+          "posts_per_page" => 1,
+          "orderby"        => "date",
+          "order"          => "DESC",
+          'post_status'      => 'publish',
+          'tax_query' => array(
+            array(
+                  'taxonomy' => 'video',
+                  'field' => 'slug', 
+                  'terms' => array( $catslug ),
+                  'operator' => 'IN'
+              )
+            )
+          );      
+          
+        $wp_query = new WP_Query( $args );
+
+        if ( $wp_query->have_posts() ) :
+          while ( $wp_query->have_posts() ) : $wp_query->the_post();
+          ?>
+            <div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
+              <div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
+                <img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
+                <div class = "s_featured_video overflow-hidden py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+                  <?php 
+                    if(get_field('post_video_link', $post->ID)) { 
+                      ?>
+                      <iframe class="h-full w-full aspect-[4/3 object-cover rounded-2xl"  src="<?php echo get_field('post_video_link', $post->ID); ?>" frameborder="0" allow="autoplay"></iframe>
+                    <?php }
+                  ?>
+                  <div class = "featured_video_image h-full  py-4 w-full  overflow-hidden absolute top-0">
+                    <?php 
+                      $url = get_field('post_video_link', $post->ID); 
+                      $embed = explode("/embed/",$url);
+                    
+                    ?>
+                    <img class="h-full w-full object-cover rounded-2xl" alt="" src="https://i.ytimg.com/vi_webp/<?php echo $embed[1]; ?>/sddefault.webp">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" style = "cursor:pointer; top: 50%;left: 50%;transform: translate(-50%, -50%); position:absolute">
+                      <path d="M30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60Z" fill="#5433ED"/>
+                      <path d="M24 21.737C24 20.1396 25.7803 19.1869 27.1094 20.0729L39.5038 28.3359C40.6913 29.1275 40.6913 30.8724 39.5038 31.6641L27.1094 39.927C25.7803 40.8131 24 39.8603 24 38.2629V21.737Z" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full lg:w-5/12 ">
+                <div class="flex items-center">
+                  <p class="text-secondary font-bold text-sm md:text-base uppercase">
+                    <?php 
+                      if(get_the_terms( $post->ID, 'video' )) {
+                        $category = get_the_terms( $post->ID, 'video' );     
+                        echo $category[0]->name;
+                      }
+                    ?>
+                  </p>
+                </div>
+                <a href="<?php the_permalink();?>" class="mt-3">
+                  <p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
+                </a>
+                <div class="mt-6">
+                  <p>
+                    <?php if(get_the_excerpt($post->ID)) {
+                      echo get_the_excerpt($post->ID);
+                    } else {
+                      echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
+                    }
+                    ?>
+                  </p>
+                </div>  
+              </div>
+            </div>
+          <?php endwhile; else : ?>
+          <p class = "text-center"><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
+        <?php endif; } ?>
     </section>
 
-		<section>
+	<section>
       <div class = "max-w-max-content m-auto px-2">
         <p class="font-bold text-xl md:text-2xl lg:text-3xl pl-4">Recent Videos</p>
         <div class ="s_video_body pb-6 mt-8">

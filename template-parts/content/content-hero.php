@@ -3,7 +3,7 @@
   <div  class = "md:flex items-center xl:items-center justify-between">
     <div class="z-20 w-full">
       <div class="max-w-max-content mx-auto w-full">
-        <div class="mx-auto max-w-[650px] mr-0 flex flex-col items-center xl:items-start px-6 xl:px-0">
+        <div class="mx-auto max-w-[650px] mr-0 flex flex-col items-center xl:items-start px-6 xl:px-4">
           <?php if(get_field('hero_title',$post->ID)) { ?>
             <h1 class="text-3xl lg:text-[2.875rem] leading-none mt-2 font-bold text-primary text-center xl:text-start">
               <?php echo get_field('hero_title',$post->ID); ?>

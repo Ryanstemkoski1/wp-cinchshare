@@ -7,7 +7,7 @@
       <p class="text-2xl lg:text-3xl font-bold text-white">free trainings, and giveaways!</p>
     </div>
     <div class="flex flex-col items-start footer_form">
-      <?php echo do_shortcode('[gravityform id="3" title="false"]'); ?>
+      <?php echo do_shortcode('[gravityform id="4" title="false"]'); ?>
     </div>
   </div>
 </div>

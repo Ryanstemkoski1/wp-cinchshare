@@ -1,4 +1,3 @@
-
 <?php
    /**
     * Template Name: Affiliate Application
@@ -20,7 +19,7 @@
       <h1 class="text-3xl md:text-4xl font-bold text-center"><?php echo get_field('affiliate_application_title', $post->ID); ?></h1>
 
       <div class="aff_form px-6 md:px-12 py-14 drop-shadow-xl rounded-lg bg-white mt-10 lg:mb-28">
-        <?php echo do_shortcode('[gravityform id="2" title="false"]'); ?>
+        <?php echo do_shortcode('[gravityform id="3" title="false"]'); ?>
       </div>
     </div>
   </main>

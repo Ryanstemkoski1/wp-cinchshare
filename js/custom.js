@@ -722,10 +722,16 @@ $(document).ready(function () {
           pass: pass
         },
         success: function (response) {
-          console.log(response)
+          const obj = JSON.parse(response);
+          if (obj.ErrorMessage == null) {
+            window.location.href = `https://app.cinchshare.com/frontend/settoken?token=${obj.Token}&url=${obj.Redirect}`;
+          } else {
+            $('.error_msg').text(obj.ErrorMessage)
+          }
         }
       });
     }
   })
+
 })
 

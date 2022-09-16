@@ -133,14 +133,25 @@
   add_action('init', 'create_cinchshare_downloads_categories');
 
   // Ajax started//
-  add_action( 'wp_ajax_get_ajaxLoadMore', 'get_ajaxLoadMore' );
-  add_action( 'wp_ajax_get_ajaxSearch', 'get_ajaxSearch' );
-  add_action( 'wp_ajax_get_ajaxLoadMore_GettingStarted', 'get_ajaxLoadMore_GettingStarted' );
-  add_action( 'wp_ajax_get_ajaxSearch_Video', 'get_ajaxSearch_Video' );
-  add_action( 'wp_ajax_get_ajaxLoadMore_Video', 'get_ajaxLoadMore_Video' );
-  add_action( 'wp_ajax_get_ajaxLoadMore_Downloads', 'get_ajaxLoadMore_Downloads' );
-  add_action( 'wp_ajax_get_ajaxSearch_CustomPost', 'get_ajaxSearch_CustomPost' );
-  add_action( 'wp_ajax_get_ajaxSearch_Downloads', 'get_ajaxSearch_Downloads' );
+  if (is_user_logged_in()) {
+    add_action( 'wp_ajax_get_ajaxLoadMore', 'get_ajaxLoadMore' );
+    add_action( 'wp_ajax_get_ajaxSearch', 'get_ajaxSearch' );
+    add_action( 'wp_ajax_get_ajaxLoadMore_GettingStarted', 'get_ajaxLoadMore_GettingStarted' );
+    add_action( 'wp_ajax_get_ajaxSearch_Video', 'get_ajaxSearch_Video' );
+    add_action( 'wp_ajax_get_ajaxLoadMore_Video', 'get_ajaxLoadMore_Video' );
+    add_action( 'wp_ajax_get_ajaxLoadMore_Downloads', 'get_ajaxLoadMore_Downloads' );
+    add_action( 'wp_ajax_get_ajaxSearch_CustomPost', 'get_ajaxSearch_CustomPost' );
+    add_action( 'wp_ajax_get_ajaxSearch_Downloads', 'get_ajaxSearch_Downloads' );
+  } else {
+    add_action( 'wp_ajax_nopriv_get_ajaxLoadMore', 'get_ajaxLoadMore' );
+    add_action( 'wp_ajax_nopriv_get_ajaxSearch', 'get_ajaxSearch' );
+    add_action( 'wp_ajax_nopriv_get_ajaxLoadMore_GettingStarted', 'get_ajaxLoadMore_GettingStarted' );
+    add_action( 'wp_ajax_nopriv_get_ajaxSearch_Video', 'get_ajaxSearch_Video' );
+    add_action( 'wp_ajax_nopriv_get_ajaxLoadMore_Video', 'get_ajaxLoadMore_Video' );
+    add_action( 'wp_ajax_nopriv_get_ajaxLoadMore_Downloads', 'get_ajaxLoadMore_Downloads' );
+    add_action( 'wp_ajax_nopriv_get_ajaxSearch_CustomPost', 'get_ajaxSearch_CustomPost' );
+    add_action( 'wp_ajax_nopriv_get_ajaxSearch_Downloads', 'get_ajaxSearch_Downloads' );
+  }
 
   function get_ajaxLoadMore() {
     $page = $_POST['page'];

@@ -66,79 +66,140 @@ get_header();
 				</div>
 			</section>
 
-			<section class = "my-12 md:my-28">
+						<section class = "my-12 md:my-28">
 				<?php
-				$args = array(
-					"posts_per_page" => 1,
-					"orderby"        => "date",
-					"order"          => "DESC",
-					'post_status'      => 'publish',
-					'category_name'  => $category_name
-					);      
-					
-				$wp_query = new WP_Query( $args );
+				$featuredId = get_field('blog_featured_post', $post_id);
 
-				if ( $wp_query->have_posts() ) :
-					while ( $wp_query->have_posts() ) : $wp_query->the_post();
+				if($featuredId) { 
+					$post = get_post($featuredId);
 					?>
-						<div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
-							<div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
-								<img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
-								<div class = "py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
-									<?php if (has_post_thumbnail( $post->ID ) ): ?>
-										<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
-										<img class="h-full w-full object-cover rounded-2xl" alt="" src="<?php echo $image[0]; ?>">
-									<?php endif; ?>
-								</div>
-							</div>
-							<div class="w-full lg:w-5/12 ">
-								<div class="flex items-center">
-									<p class="text-secondary font-bold text-sm md:text-base uppercase">
-										<?php 
-											if(get_the_category($post->ID)) {
-												$category_detail=get_the_category($post->ID);
-												echo $category_detail[0]->cat_name;
-											}
-										?>
-									</p>
-								</div>
-								<a href="<?php the_permalink();?>" class="mt-3">
-									<p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
-								</a>
-								<div class="mt-6">
-									<p>
-										<?php if(get_the_excerpt($post->ID)) {
-											echo get_the_excerpt($post->ID);
-										} else {
-											echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
-										}
-										?>
-									</p>
-								</div>  
-								<div class ="flex flex-wrap items-center justify-between pt-6">
-									<div class="flex flex-wrap items-center">
-										<?php $author_id=$post->post_author; ?>
-										<img src="<?php echo get_avatar_url( $author_id ); ?> " class="h-6 w-6 rounded-full" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
-										<p class = "font-bold text-sm md:text-base ml-2">
-											<?php 
-												$first = get_the_author_meta( 'user_firstname' , $author_id );
-												if(!empty($first)) {
-													the_author_meta( 'user_firstname' , $author_id );
-													echo " ";
-													the_author_meta( 'user_lastname' , $author_id );
-												} else {
-													the_author_meta( 'user_nicename' , $author_id );
-												}
-											?> 
-										</p>
-									</div>
-									<div class="flex text-secondary font-bold text-sm md:text-base"><?php echo do_shortcode('[post-views]'); ?> &nbsp;  min read</div>
-								</div>
+					<div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
+						<div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
+							<img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
+							<div class = "py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+								<?php if (has_post_thumbnail( $post->ID ) ): ?>
+									<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+									<img class="h-full w-full object-cover rounded-2xl" alt="" src="<?php echo $image[0]; ?>">
+								<?php endif; ?>
 							</div>
 						</div>
-					<?php endwhile; else : ?>
-					<p><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
-				<?php endif; ?>
+						<div class="w-full lg:w-5/12 ">
+							<div class="flex items-center">
+								<p class="text-secondary font-bold text-sm md:text-base uppercase">
+									<?php 
+										if(get_the_category($post->ID)) {
+											$category_detail=get_the_category($post->ID);
+											echo $category_detail[0]->cat_name;
+										}
+									?>
+								</p>
+							</div>
+							<a href="<?php the_permalink();?>" class="mt-3">
+								<p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
+							</a>
+							<div class="mt-6">
+								<p>
+									<?php if(get_the_excerpt($post->ID)) {
+										echo get_the_excerpt($post->ID);
+									} else {
+										echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
+									}
+									?>
+								</p>
+							</div>  
+							<div class ="flex flex-wrap items-center justify-between pt-6">
+								<div class="flex flex-wrap items-center">
+									<?php $author_id=$post->post_author; ?>
+									<img src="<?php echo get_avatar_url( $author_id ); ?> " class="h-6 w-6 rounded-full" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
+									<p class = "font-bold text-sm md:text-base ml-2">
+										<?php 
+											$first = get_the_author_meta( 'user_firstname' , $author_id );
+											if(!empty($first)) {
+												the_author_meta( 'user_firstname' , $author_id );
+												echo " ";
+												the_author_meta( 'user_lastname' , $author_id );
+											} else {
+												the_author_meta( 'user_nicename' , $author_id );
+											}
+										?> 
+									</p>
+								</div>
+								<div class="flex text-secondary font-bold text-sm md:text-base"><?php echo do_shortcode('[post-views]'); ?> &nbsp;  min read</div>
+							</div>
+						</div>
+					</div>
+				<?php } else {
+					$args = array(
+						"posts_per_page" => 1,
+						"orderby"        => "date",
+						"order"          => "DESC",
+						'post_status'      => 'publish',
+						'category_name'  => $category_name
+						);      
+						
+					$wp_query = new WP_Query( $args );
+
+					if ( $wp_query->have_posts() ) :
+						while ( $wp_query->have_posts() ) : $wp_query->the_post();
+						?>
+							<div class="max-w-[1300px] flex flex-col lg:flex-row items-center w-full mx-auto px-4">
+								<div class="relative w-full lg:w-7/12 lg:pr-10 mb-10 lg:mb-0">
+									<img class="w-full" alt="" src="/wp-content/uploads/learning-center_bg_Vector.svg">
+									<div class = "py-4 absolute top-0 bottom-0 left-0 right-0 m-auto w-11/12 h-full md:w-10/12">
+										<?php if (has_post_thumbnail( $post->ID ) ): ?>
+											<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' ); ?>
+											<img class="h-full w-full object-cover rounded-2xl" alt="" src="<?php echo $image[0]; ?>">
+										<?php endif; ?>
+									</div>
+								</div>
+								<div class="w-full lg:w-5/12 ">
+									<div class="flex items-center">
+										<p class="text-secondary font-bold text-sm md:text-base uppercase">
+											<?php 
+												if(get_the_category($post->ID)) {
+													$category_detail=get_the_category($post->ID);
+													echo $category_detail[0]->cat_name;
+												}
+											?>
+										</p>
+									</div>
+									<a href="<?php the_permalink();?>" class="mt-3">
+										<p class="mt-4 lg:mt-6 text-xl md:text-2xl lg:text-3xl font-bold line-clamp-2 min-h-[70px]"><?php echo get_the_title($post->ID); ?></p>
+									</a>
+									<div class="mt-6">
+										<p>
+											<?php if(get_the_excerpt($post->ID)) {
+												echo get_the_excerpt($post->ID);
+											} else {
+												echo wp_trim_words( strip_tags(get_the_content()), 30, '...' );
+											}
+											?>
+										</p>
+									</div>  
+									<div class ="flex flex-wrap items-center justify-between pt-6">
+										<div class="flex flex-wrap items-center">
+											<?php $author_id=$post->post_author; ?>
+											<img src="<?php echo get_avatar_url( $author_id ); ?> " class="h-6 w-6 rounded-full" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
+											<p class = "font-bold text-sm md:text-base ml-2">
+												<?php 
+													$first = get_the_author_meta( 'user_firstname' , $author_id );
+													if(!empty($first)) {
+														the_author_meta( 'user_firstname' , $author_id );
+														echo " ";
+														the_author_meta( 'user_lastname' , $author_id );
+													} else {
+														the_author_meta( 'user_nicename' , $author_id );
+													}
+												?> 
+											</p>
+										</div>
+										<div class="flex text-secondary font-bold text-sm md:text-base"><?php echo do_shortcode('[post-views]'); ?> &nbsp;  min read</div>
+									</div>
+								</div>
+							</div>
+						<?php endwhile; else : ?>
+						<p><?php esc_html_e( 'Sorry, There is no post on our site.' ); ?></p>
+					<?php endif; } ?>
 			</section>
 
 			<section>
