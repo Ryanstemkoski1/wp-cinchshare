@@ -21,6 +21,7 @@ if ( ! function_exists( 'cinchshare_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function cinchshare_setup() {
+		
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
